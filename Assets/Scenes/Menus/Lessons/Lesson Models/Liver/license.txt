@@ -1,0 +1,8 @@
+Model Information:
+* title:	Human Liver Model
+* source:	https://sketchfab.com/3d-models/human-liver-model-08ee1a75c6fa437297848027c1baa94c
+* author:	F A B A Z E (https://sketchfab.com/fabaze)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
