@@ -21,11 +21,19 @@ namespace SlimUI.ModernMenu{
 				image.color = themeController.currentColor;
 			}
 
-			message = gameObject;
-
-			if(isText){
-				message.GetComponent<TextMeshPro>().color = themeController.textColor;
+			message = gameObject; 
+			try
+            {
+				if (isText)
+				{
+					message.GetComponent<TextMeshPro>().color = themeController.textColor;
+				}
 			}
+			finally
+            {
+
+            }
+			
 		}
 	}
 }

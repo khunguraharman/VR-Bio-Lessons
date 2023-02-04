@@ -7,9 +7,6 @@ using System.IO;
 using SlimUI.ModernMenu;
 using UnityEngine.InputSystem.XR;
 
-
-
-
 public class AllXRData : MonoBehaviour
 {
     public StreamWriter writeXRdata;
@@ -159,8 +156,11 @@ public class AllXRData : MonoBehaviour
         string active_lesson_model = "";
         Vector3[] Lesson_model_bounds = new Vector3[2];
 
-        string active_preview = "";        
+        string active_preview = "";
+        string active_subtopic_card = "";
+
         Vector3[] Preview_Corners = new Vector3[4];
+        Vector3[] SubTopicCard_Corners = new Vector3[4];
         if (LeftHandPresence.CurrentLesson && LeftHandPresence.CurrentLesson.isActiveAndEnabled)
         {
             active_lesson_model = LeftHandPresence.Chosen_Lesson_Model;
@@ -170,21 +170,21 @@ public class AllXRData : MonoBehaviour
             if(LeftHandPresence.CurrentPreview && LeftHandPresence.CurrentPreview.activeInHierarchy)
             {
                 active_preview  = LeftHandPresence.CurrentPreview.GetComponentInChildren<TextMeshPro>().text;                               
-                LeftHandPresence.CurrentPreview.GetComponent<RectTransform>().GetWorldCorners(Preview_Corners);
+                LeftHandPresence.CurrentPreview.GetComponent<RectTransform>().GetWorldCorners(Preview_Corners);                
+            }
 
+            if(LeftHandPresence.CurrentSubTopicCard && LeftHandPresence.CurrentSubTopicCard.isActiveAndEnabled)
+            {
+                active_subtopic_card = LeftHandPresence.Chosen_subtopiccard;
+                LeftHandPresence.CurrentSubTopicCard.GetComponent<RectTransform>().GetWorldCorners(SubTopicCard_Corners);
             }
         }
-        else
-        {
-
-        }
+        
         string preview_corners = string.Join(",", Preview_Corners);
-        the_Data += string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t", active_lesson_model, Lesson_model_bounds[0], Lesson_model_bounds[1], active_preview, preview_corners) ;
+        string card_corners = string.Join(",", SubTopicCard_Corners);
+        the_Data += string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t", active_lesson_model, Lesson_model_bounds[0], Lesson_model_bounds[1], active_preview, preview_corners, active_subtopic_card, card_corners) ;
 
         writeXRdata.WriteLine(the_Data);
-        writeXRdata.Flush();
-        
-        
-    }
-    
+        writeXRdata.Flush();        
+    }    
 }

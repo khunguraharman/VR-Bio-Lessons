@@ -72,6 +72,7 @@ public class LeftHandPresence : MonoBehaviour
     public static List<string> previews_spawned = new List<string>();
 
     public static string Chosen_Lesson_Model;
+    public static string Chosen_subtopiccard;
 
 private void Awake()
     {

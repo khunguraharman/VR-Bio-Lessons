@@ -33,35 +33,38 @@ public class FullSubTopicCard : MonoBehaviour
     }
 
     void Update()
-    {        
-        if (VoiceOver.time == VoiceOver.clip.length) //if reaching end, switch pause sprite to play sprite
+    {
+        if(!VoiceOver)
         {
-            playpausebool = 0;
-            PlayPauseBtnImg.sprite = PlayPauseImgs[playpausebool];
-            VoiceOver.time = 0; 
-        }  
-        
-        if (!sliderselected)
-        {
-            
-            AudioPlaybackSlider.value = VoiceOver.time;
-             
-            /*
-            if (playpausebool == 1 && !VoiceOver.isPlaying)
+            if (VoiceOver.time == VoiceOver.clip.length) //if reaching end, switch pause sprite to play sprite
             {
-                Debug.Log("VO should be playing but isn't");
-                //VoiceOver.Play(); 
+                playpausebool = 0;
+                PlayPauseBtnImg.sprite = PlayPauseImgs[playpausebool];
+                VoiceOver.time = 0;
             }
 
-            else if(playpausebool == 1 && VoiceOver.isPlaying)
+            if (!sliderselected)
             {
-                //Debug.Log("VO should be playing and is");
-            }
-            */
 
+                AudioPlaybackSlider.value = VoiceOver.time;
+
+                /*
+                if (playpausebool == 1 && !VoiceOver.isPlaying)
+                {
+                    Debug.Log("VO should be playing but isn't");
+                    //VoiceOver.Play(); 
+                }
+
+                else if(playpausebool == 1 && VoiceOver.isPlaying)
+                {
+                    //Debug.Log("VO should be playing and is");
+                }
+                */
+
+            }
         }
-
         
+               
     }
 
 

@@ -31,6 +31,7 @@ public class LessonModel : MonoBehaviour
 	public GameObject OtherComponents;
 
 	public MeshRenderer[] LargestMeshes;
+	public SkinnedMeshRenderer[] LargestAnimations;
 
 	public Bounds Lesson_Model_Bounds { get; private set; }
 
@@ -121,13 +122,35 @@ public class LessonModel : MonoBehaviour
 
 	public void UpdateModelBounds()
     {
-		Lesson_Model_Bounds = LargestMeshes[0].GetComponent<Renderer>().bounds;
-
-		for (int i=1; i<LargestMeshes.Length; i++)
+		if(LargestAnimations.Length==0)
         {
-			Bounds m_bounds = LargestMeshes[i].GetComponent<Renderer>().bounds;
-			Lesson_Model_Bounds.Encapsulate(m_bounds);
-        }
+			try
+			{
+				Lesson_Model_Bounds = LargestMeshes[0].GetComponent<Renderer>().bounds;
+
+				for (int i = 1; i < LargestMeshes.Length; i++)
+				{
+					Bounds m_bounds = LargestMeshes[i].GetComponent<Renderer>().bounds;
+					Lesson_Model_Bounds.Encapsulate(m_bounds);
+				}
+			}
+			finally
+			{
+
+			}
+		}
+		else if(LargestMeshes.Length==0)
+        {
+			Lesson_Model_Bounds = LargestAnimations[0].GetComponent<Renderer>().bounds;
+
+			for (int i = 1; i < LargestAnimations.Length; i++)
+			{
+				Bounds m_bounds = LargestMeshes[i].GetComponent<Renderer>().bounds;
+				Lesson_Model_Bounds.Encapsulate(m_bounds);
+			}
+		}
+		
+		
     }
 }
 

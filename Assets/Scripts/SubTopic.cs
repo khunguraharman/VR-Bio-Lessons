@@ -19,7 +19,7 @@ public class SubTopic : MonoBehaviour
 	private AudioSource VoiceOver = null;
 	private Vector3 Preview_Translation_World = new Vector3(0, 0, 0.08f);
 	private SubTopicContents m_subtopic_contents = new SubTopicContents();
-
+	private TextMeshPro[] tmps;
 	void Awake()
     {
 		
@@ -71,8 +71,24 @@ public class SubTopic : MonoBehaviour
 		LeftHandPresence.CurrentSubTopicCard = Instantiate(Full, LeftHandPresence.FullCardAnchor);
 		LeftHandPresence.FullLessonDefaultScale = LeftHandPresence.CurrentSubTopicCard.transform.localScale;
 		LeftHandPresence.CurrentSubTopicCard.transform.localScale = LeftHandPresence.FullLessonScale * LeftHandPresence.FullLessonDefaultScale;
-		//LeftHandPresence.CurrentSubTopicCard.transform.parent = LeftHandPresence.FullCardAnchor; 
-		//LeftHandPresence.CurrentLecturerFace = LeftHandPresence.
+
+		Transform contents = Full.transform.Find("Content");
+		tmps = contents.GetComponentsInChildren<TextMeshPro>();
+		string name = tmps[0].text;
+		LeftHandPresence.Chosen_subtopiccard = name;
+		string filename = string.Format("{0}/{1}_SubTopicContents.json",Application.dataPath, name );
+		if(System.IO.File.Exists(filename))
+        {
+			Debug.Log("The JSON was saved, no further action needed");
+        }
+        else
+        {
+			Debug.Log("no JSON found, running backup function");
+			Backup_LogSubTopicData(name);
+		}
+		 
+
+
 	}
 
 	public void PreviewLesson ()
@@ -95,10 +111,11 @@ public class SubTopic : MonoBehaviour
 			LeftHandPresence.PreviewDefaultScale = LeftHandPresence.CurrentPreview.transform.localScale;
 			LeftHandPresence.CurrentPreview.transform.localScale = LeftHandPresence.PreviewScale* LeftHandPresence.PreviewDefaultScale;
 			//LeftHandPresence.CurrentPreview.transform.parent = LeftHandPresence.PreviewAnchor; 
-			LogSubTopicData();
+			//LogSubTopicData();
 			//PreviewInstance = Instantiate(Preview, pos, rot * transform.rotation, transform);
 			//Debug.Log(Preview.name + "Should have spawned");
-		}		
+		}
+		LogSubTopicData();
 	}	
 
 	public void DestroyPreview()
@@ -127,10 +144,11 @@ public class SubTopic : MonoBehaviour
 			LeftHandPresence.PreviewDefaultScale = LeftHandPresence.CurrentPreview.transform.localScale;
 			LeftHandPresence.CurrentPreview.transform.localScale = LeftHandPresence.PreviewScale * LeftHandPresence.PreviewDefaultScale;
 			//LeftHandPresence.CurrentPreview.transform.parent = LeftHandPresence.PreviewAnchor; 
-			LogSubTopicData();
+			//LogSubTopicData();
 			//PreviewInstance = Instantiate(Preview, pos, rot * transform.rotation, transform);
 			//Debug.Log(Preview.name + "Should have spawned");
 		}
+		LogSubTopicData();
 	}
 
 	public void LogSubTopicData()
@@ -163,6 +181,33 @@ public class SubTopic : MonoBehaviour
 			}		
 		}
     }
+
+	public void Backup_LogSubTopicData(string m_name)
+	{
+		if (!LeftHandPresence.previews_spawned.Contains(m_name)) //if the card is instantatiated, we might as well treat the preview as being viewed
+		{
+			LeftHandPresence.previews_spawned.Add(m_name);
+		}
+
+		if(m_subtopic_contents.subtopic_name == "")
+        {
+			m_subtopic_contents.subtopic_name = m_name;
+		}
+
+		if(m_subtopic_contents.subtopic_text.Count < tmps.Length-2) //if there are 4 tmps, there should be 2 string entries
+        {
+			for (int i = 1; i < tmps.Length - 1; i++)
+			{
+				m_subtopic_contents.subtopic_text.Add(tmps[i].text);
+				Debug.Log(tmps[i].text);
+			}
+		}
+		
+		string filename = string.Format("/{0}_SubTopicContents.json", m_name);
+
+		System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
+		Debug.Log("Should have made second attempt at saving JSON for" + filename);				
+	}
 
 	public class SubTopicContents
     {
