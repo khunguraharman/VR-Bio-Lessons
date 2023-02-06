@@ -45,22 +45,7 @@ public class FullSubTopicCard : MonoBehaviour
 
             if (!sliderselected)
             {
-
                 AudioPlaybackSlider.value = VoiceOver.time;
-
-                /*
-                if (playpausebool == 1 && !VoiceOver.isPlaying)
-                {
-                    Debug.Log("VO should be playing but isn't");
-                    //VoiceOver.Play(); 
-                }
-
-                else if(playpausebool == 1 && VoiceOver.isPlaying)
-                {
-                    //Debug.Log("VO should be playing and is");
-                }
-                */
-
             }
         }
         

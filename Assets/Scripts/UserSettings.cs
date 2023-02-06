@@ -150,11 +150,7 @@ public class UserSettings : MonoBehaviour
 	void UpdateLessonVolume(float value)
 	{
 		LessonVolumeText.text = value.ToString("0");			
-		LeftHandPresence.AMG_VO.audioMixer.SetFloat("LecturerMasterVolume", to_decibels(value)); //write to the audio mixer in decibles
-			
-		//Debug.Log("The VO volume has be set to " + value + " or" + to_decibels(value) + " decibels");
-		//LeftHandPresence.CurrentLesson.ChosenLecturer.SubTopicVoiceOvers[LeftHandPresence.CurrentLesson.CurrentFullSubTopicCard].volume = value / 100f; //Volume is 0 to 1, but slider is 0 to 100
-		//LeftHandPresence.LessonVolume = value; 
+		LeftHandPresence.AMG_VO.audioMixer.SetFloat("LecturerMasterVolume", to_decibels(value)); //write to the audio mixer in decibles		
 	}
 
 	public void AudioPanel()
@@ -169,7 +165,7 @@ public class UserSettings : MonoBehaviour
 		MainSettings.ShowPanel(SettingsIndex);
 	}		
 
-	public void UserSettingsPanel()
+	public void AnimationSettingsPanel()
 	{
 		//PlayHover();
 		SettingsIndex = 2;

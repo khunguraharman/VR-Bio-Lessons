@@ -25,19 +25,59 @@ public class ChangeLesson : MonoBehaviour
 
 	[Header("Metadata")]
 	public RectTransform BoundingRectangle;
+	private int different_metadata_index = 0;
 
-
+	public List<string> JSONlessoncheck { get; private set; }
 	void  Awake ()
-	{			
-		for(int i=0; i <Lessons.Length; i++)
+	{
+		JSONlessoncheck = new List<string>(); 
+		TotalLessons = Lessons.Length;
+		for(int i=0; i<Lessons.Length;i++)
         {
-			Lessons[i].gameObject.SetActive(false);
-        }			
+			if (i != XRMenu.ChosenLesson)
+			{
+				Lessons[i].gameObject.SetActive(false);
+			}
+			else
+            {
+				Lessons[i].gameObject.SetActive(true);
+            }
+		}
+		
+		if (!TransferFiles.Update_Lessons && TransferFiles.Perform_UpdateCheck)
+		{
+			for (int i=0; i <TotalLessons; i++)
+			{		
+				string lesson_name_m = Lessons[i].Get_Lesson_Name().text; //all the lessons in the current build
+				JSONlessoncheck.Add(LeftHandPresence.build_info.ToString() + "_lessonsummary_" + lesson_name_m + ".json"); //the meta data in this build
+																														   //does the meta data in the build match the meta data in S3?
+				bool bucket_up2date = TransferFiles.S3_lessonsummary_json.Contains(JSONlessoncheck[i]);
+
+				if (!bucket_up2date) //if it does not, then 
+				{
+					TransferFiles.Update_Lessons = true;					
+					break;
+				}
+			}
+			TransferFiles.Perform_UpdateCheck = false; //if the check is completed, ensure it is not performed again			
+			
+        }
+
+		// Get a list of every lessonn in the build
+
+		if(TransferFiles.Update_Lessons) //need to rename, rewrite and reupload the .json file reupload them
+        {
+			for(int i=0; i< TotalLessons; i++)
+            {
+				TextMeshPro lesson_tmp = Lessons[i].Get_Lesson_Name();
+				Lessons[i].Log_LessonJSON(lesson_tmp);
+            }
+        }
 	}
 
     void Start()
     {
-		TotalLessons = Lessons.Length;
+		
 		//Debug.Log(TotalLessons + "is the total number of lecturers!");			
 	}
 

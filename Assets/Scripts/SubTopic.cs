@@ -10,6 +10,8 @@ using System.Linq;
 
 public class SubTopic : MonoBehaviour
 {
+	private LessonModel parenet_LM;
+	private XRSimpleInteractable xRSimpleInteractable;
 	public bool Get_MeshRenderers_InChildren;
 	public bool Make_RendereredMaterials_Emissable;
 	public GameObject Preview;
@@ -20,9 +22,10 @@ public class SubTopic : MonoBehaviour
 	private Vector3 Preview_Translation_World = new Vector3(0, 0, 0.08f);
 	private SubTopicContents m_subtopic_contents = new SubTopicContents();
 	private TextMeshPro[] tmps;
+	public bool UsePreviewVec3;
 	void Awake()
     {
-		
+		parenet_LM = transform.parent.GetComponent<LessonModel>();
 		if (Get_MeshRenderers_InChildren)
         {			
 			XRTintInteractableVisual thetopic = gameObject.GetComponent<XRTintInteractableVisual>();
@@ -45,7 +48,24 @@ public class SubTopic : MonoBehaviour
             }
 
 		}
+		xRSimpleInteractable = GetComponent<XRSimpleInteractable>();
 
+		xRSimpleInteractable.firstHoverEntered.AddListener(callback_firsthover);
+		xRSimpleInteractable.lastHoverExited.AddListener(callback_lastexit);
+
+		if (UsePreviewVec3)
+        {
+			xRSimpleInteractable.hoverEntered.AddListener(PreviewLessonVec3);
+		}
+		else
+        {
+			xRSimpleInteractable.hoverEntered.AddListener(PreviewLesson);
+        }
+		
+
+		xRSimpleInteractable.hoverExited.AddListener(DestroyPreview);
+		xRSimpleInteractable.selectEntered.AddListener(callback_select);
+		
 	}
 	public void PlayTick()
     {	
@@ -91,7 +111,7 @@ public class SubTopic : MonoBehaviour
 
 	}
 
-	public void PreviewLesson ()
+	public void PreviewLesson (BaseInteractionEventArgs m_hover )
 	{
 		//only show preview if the fullcard isn't shown
 		//only show if the open fullcard is different from what is being pointed at
@@ -118,23 +138,17 @@ public class SubTopic : MonoBehaviour
 		LogSubTopicData();
 	}	
 
-	public void DestroyPreview()
+	public void DestroyPreview(BaseInteractionEventArgs m_exit)
     {		 
 		Destroy(LeftHandPresence.CurrentPreview);
 		//Debug.Log(PreviewInstance.name + " should have been destroyed");
     }
 
-	public void PreviewLessonVec3(Transform position)
+	public void PreviewLessonVec3(BaseInteractionEventArgs m_hover)
     {
 		if ((!LeftHandPresence.CurrentSubTopicCard || (LeftHandPresence.CurrentLesson.CurrentPreview != LeftHandPresence.CurrentLesson.CurrentFullSubTopicCard)) && !LeftHandPresence.CurrentPreview)
 		{
-			/*
-			Vector3 ContentTranslate = LeftHandPresence.CurrentLesson.PreviewPositions[LeftHandPresence.CurrentLesson.CurrentPreview];
-			Vector3 ContentRotation = LeftHandPresence.CurrentLesson.PreviewRotations[LeftHandPresence.CurrentLesson.CurrentPreview];
-			*/
-			//Quaternion rot = new Quaternion();
-			//rot.eulerAngles = ContentRotation;
-			//Vector3 pos = transform.position + transform.TransformDirection(ContentTranslate);
+			Transform position = transform.Find("Anchor").transform;
 			
 			Debug.Log("Should have spawned the preview for " + Preview.name);
 			LeftHandPresence.CurrentPreview = Instantiate(Preview, LeftHandPresence.PreviewAnchor);
@@ -174,7 +188,7 @@ public class SubTopic : MonoBehaviour
 					Debug.Log(texts[i].text);
 				}
 
-				string filename = string.Format("/{0}_SubTopicContents.json", preview_text);
+				string filename = string.Format("/{0}_SubTopicContents_{1}.json", preview_text, AllXRData.user_session);
 
 				System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
 				Debug.Log("Should have saved the JSON file for" + filename);
@@ -203,7 +217,7 @@ public class SubTopic : MonoBehaviour
 			}
 		}
 		
-		string filename = string.Format("/{0}_SubTopicContents.json", m_name);
+		string filename = string.Format("/{0}_SubTopicContents_{1}.json", m_name, AllXRData.user_session);
 
 		System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
 		Debug.Log("Should have made second attempt at saving JSON for" + filename);				
@@ -215,7 +229,22 @@ public class SubTopic : MonoBehaviour
 		public List<string> subtopic_text = new List<string>();
 	}
 
+	public void callback_firsthover(BaseInteractionEventArgs preview_index)
+    {
+		parenet_LM.AssignNothingMaskForall(this);
+		parenet_LM.AssignPreviewIndex(this);
+    }
 
+	public void callback_lastexit(BaseInteractionEventArgs lastexit)
+    {
+		parenet_LM.ReAssignDefaultMaskForAll();
+    }
+	public void callback_select(BaseInteractionEventArgs interactor_m)
+    {
+		parenet_LM.AssignFullSubTopicIndex(this);
+		DestroyPreview(interactor_m);
+		FullLesson();
+	}
 		
 }
 

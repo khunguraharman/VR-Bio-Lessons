@@ -10,29 +10,17 @@ public class Lesson : MonoBehaviour
 	private int PanelNumber;				
 	private int old_panel_index = 0;
 	public GameObject[] Panels = new GameObject[3];
-
+	
 	private LessonContents m_lesson_contents = new LessonContents();
 	void  Awake ()
 	{		
 		for(int i=0; i <Panels.Length; i++)
         {
 			Panels[i].SetActive(false);
-        }
-
-		TextMeshPro name = GetComponentInChildren<TextMeshPro>();
-		if (!LeftHandPresence.lesson_submenus_viewed.Contains(name.text)) //only update if its the first time viewing the page
-        {
-			Log_LessonJSON(name);
-			LeftHandPresence.lesson_submenus_viewed.Add(name.text); //add the page to the viewing history
-			Debug.Log(string.Format("First time viewing {0} lesson in the submenu", name.text));
-        }
-        else
-        {
-			Debug.Log(string.Format("Already saved {0} lesson from the submenu", name.text));
-        }
+        }        
 	}
 
-	void Log_LessonJSON(TextMeshPro m_name)
+	public void Log_LessonJSON(TextMeshPro m_name)
     {
 		//Get Summary Info
 		TextMeshPro text_1 = m_name;
@@ -54,19 +42,16 @@ public class Lesson : MonoBehaviour
 			m_lesson_contents.lesson_discussions[i] = text_2[i].text;
 		}
 
-		string filename = string.Format("/{0}_lessonsummary.json", m_lesson_contents.lesson_summary[0]);
+		string filename = string.Format("/{0}_lessonsummary_{1}.json", LeftHandPresence.build_info, m_lesson_contents.lesson_summary[0]);
 
 		System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_lesson_contents));
 	}
 
-    void Start()
+	public TextMeshPro Get_Lesson_Name()
     {
-			
-	}
-
-    public void Update ()
-	{			
-			
+		TextMeshPro name = GetComponentInChildren<TextMeshPro>();
+		
+		return name;
 	}
 		
 

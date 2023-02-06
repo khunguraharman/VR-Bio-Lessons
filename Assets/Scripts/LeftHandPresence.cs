@@ -9,8 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class LeftHandPresence : MonoBehaviour
 {
-    //public LessonAnchor TheLessonAnchor;
-    //public static Transform AnchorTransform { get; private set; }
+    public static string build_info = "0_0_1";
     List<UnityEngine.XR.InputDevice> AllDevices = new List<UnityEngine.XR.InputDevice>();
 
     public GameObject[] ControllerPrefabs = new GameObject[4];

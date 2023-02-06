@@ -6,9 +6,13 @@ using TMPro;
 using System.IO;
 using SlimUI.ModernMenu;
 using UnityEngine.InputSystem.XR;
+using System.Security;
+using System;
 
 public class AllXRData : MonoBehaviour
 {
+    static string userName = System.Environment.UserName;
+    public static string user_session { get; private set; }
     public StreamWriter writeXRdata;
     
     private XRNode[] Nodes = new XRNode[5] {XRNode.CenterEye, XRNode.LeftEye, XRNode.RightEye, XRNode.LeftHand, XRNode.RightHand}; 
@@ -16,14 +20,16 @@ public class AllXRData : MonoBehaviour
     private InputFeatureUsage<Vector3>[] Positions = new InputFeatureUsage<Vector3>[5] { CommonUsages.centerEyePosition, CommonUsages.leftEyePosition, CommonUsages.rightEyePosition, CommonUsages.devicePosition, CommonUsages.devicePosition };
     private InputFeatureUsage<Quaternion>[] Rotations = new InputFeatureUsage<Quaternion>[5] { CommonUsages.centerEyeRotation, CommonUsages.leftEyeRotation, CommonUsages.rightEyeRotation, CommonUsages.deviceRotation, CommonUsages.deviceRotation };
     private Vector3[] Position_Values = new Vector3[5];
-    private Quaternion[] Rotation_Values = new Quaternion[5];
-
-     
-    // Start is called before the first frame update
-
+    private Quaternion[] Rotation_Values = new Quaternion[5];         
+    
     void Awake()
     {
-        writeXRdata = new StreamWriter("AllXRData.txt", append: false);
+        Debug.Log("Username is: " + userName);
+        DateTime year_start = new DateTime(2023, 1, 1);
+        TimeSpan total_minutes = DateTime.Now - year_start; 
+        user_session = string.Format("{0}_{1}",userName,(int)total_minutes.TotalMinutes);
+        string outputfile = string.Format("{0}viewinghistory.txt", user_session);
+        writeXRdata = new StreamWriter(Path.Combine(Application.dataPath,outputfile), append: false);
         
         string header = "";
 
@@ -58,9 +64,7 @@ public class AllXRData : MonoBehaviour
         for(int j =0; j<suffixes.Length;j++)
         {
             header += string.Format("{0}\t", prefixes[0] + suffixes[j]);
-        }
-            
-        
+        }       
 
         prefixes = new string[1] { "Preview_"};
         suffixes = new string[2] { "Name", "Corners" };

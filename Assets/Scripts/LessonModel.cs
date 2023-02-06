@@ -55,12 +55,7 @@ public class LessonModel : MonoBehaviour
         {
 			Components_Interactable[i] = Components[i].gameObject.GetComponent<XRSimpleInteractable>();
         }
-	}
-
-    private void Update ()
-	{
-		
-	}	
+	}    	
 	
 	public void AssignFullSubTopicIndex(SubTopic thesubtopic) // value is updated when the subtopic is slected/fullcard is instantiated
     {
