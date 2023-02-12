@@ -10,7 +10,7 @@ using System.Linq;
 
 public class SubTopic : MonoBehaviour
 {
-	private LessonModel parenet_LM;
+	private LessonModel parent_LM;
 	private XRSimpleInteractable xRSimpleInteractable;
 	public bool Get_MeshRenderers_InChildren;
 	public bool Make_RendereredMaterials_Emissable;
@@ -25,7 +25,11 @@ public class SubTopic : MonoBehaviour
 	public bool UsePreviewVec3;
 	void Awake()
     {
-		parenet_LM = transform.parent.GetComponent<LessonModel>();
+		parent_LM = transform.parent.GetComponent<LessonModel>();
+		if(parent_LM == null)
+        {
+			parent_LM = transform.parent.parent.GetComponent<LessonModel>();
+        }
 		if (Get_MeshRenderers_InChildren)
         {			
 			XRTintInteractableVisual thetopic = gameObject.GetComponent<XRTintInteractableVisual>();
@@ -91,24 +95,6 @@ public class SubTopic : MonoBehaviour
 		LeftHandPresence.CurrentSubTopicCard = Instantiate(Full, LeftHandPresence.FullCardAnchor);
 		LeftHandPresence.FullLessonDefaultScale = LeftHandPresence.CurrentSubTopicCard.transform.localScale;
 		LeftHandPresence.CurrentSubTopicCard.transform.localScale = LeftHandPresence.FullLessonScale * LeftHandPresence.FullLessonDefaultScale;
-
-		Transform contents = Full.transform.Find("Content");
-		tmps = contents.GetComponentsInChildren<TextMeshPro>();
-		string name = tmps[0].text;
-		LeftHandPresence.Chosen_subtopiccard = name;
-		string filename = string.Format("{0}/{1}_SubTopicContents.json",Application.dataPath, name );
-		if(System.IO.File.Exists(filename))
-        {
-			Debug.Log("The JSON was saved, no further action needed");
-        }
-        else
-        {
-			Debug.Log("no JSON found, running backup function");
-			Backup_LogSubTopicData(name);
-		}
-		 
-
-
 	}
 
 	public void PreviewLesson (BaseInteractionEventArgs m_hover )
@@ -134,8 +120,7 @@ public class SubTopic : MonoBehaviour
 			//LogSubTopicData();
 			//PreviewInstance = Instantiate(Preview, pos, rot * transform.rotation, transform);
 			//Debug.Log(Preview.name + "Should have spawned");
-		}
-		LogSubTopicData();
+		}		
 	}	
 
 	public void DestroyPreview(BaseInteractionEventArgs m_exit)
@@ -161,66 +146,42 @@ public class SubTopic : MonoBehaviour
 			//LogSubTopicData();
 			//PreviewInstance = Instantiate(Preview, pos, rot * transform.rotation, transform);
 			//Debug.Log(Preview.name + "Should have spawned");
-		}
-		LogSubTopicData();
+		}		
 	}
 
-	public void LogSubTopicData()
+	public void LogSubTopicData(string lesson_model_name)
     {
-		string preview_text = LeftHandPresence.CurrentPreview.GetComponentInChildren<TextMeshPro>().text;
-		Debug.Log("You are hovering over the" + preview_text + "subtopic");
-		if(!LeftHandPresence.previews_spawned.Contains(preview_text)) //if the preview has not been viewed before, add it to the static string and save the SubTopic Class as a JSON
-        {
-			LeftHandPresence.previews_spawned.Add(preview_text);
-			m_subtopic_contents.subtopic_name = preview_text;
-			Transform contents = Full.transform.Find("Content");
-			if(!contents)
-            {
-				Debug.Log("did not find the parent object of the TMPs");
-            }
-            else
-            {
-				TextMeshPro[] texts = contents.GetComponentsInChildren<TextMeshPro>(); // should return the name, 2-3 text points, and the time of the audio file
-				Debug.Log("found" + texts.Length + "TMPs under Content");
-				for (int i = 1; i < texts.Length - 1; i++)
-				{
-					m_subtopic_contents.subtopic_text.Add(texts[i].text);
-					Debug.Log(texts[i].text);
-				}
-
-				string filename = string.Format("/{0}_SubTopicContents_{1}.json", preview_text, AllXRData.user_session);
-
-				System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
-				Debug.Log("Should have saved the JSON file for" + filename);
-			}		
-		}
-    }
-
-	public void Backup_LogSubTopicData(string m_name)
-	{
-		if (!LeftHandPresence.previews_spawned.Contains(m_name)) //if the card is instantatiated, we might as well treat the preview as being viewed
-		{
-			LeftHandPresence.previews_spawned.Add(m_name);
-		}
-
-		if(m_subtopic_contents.subtopic_name == "")
-        {
-			m_subtopic_contents.subtopic_name = m_name;
-		}
-
-		if(m_subtopic_contents.subtopic_text.Count < tmps.Length-2) //if there are 4 tmps, there should be 2 string entries
-        {
-			for (int i = 1; i < tmps.Length - 1; i++)
-			{
-				m_subtopic_contents.subtopic_text.Add(tmps[i].text);
-				Debug.Log(tmps[i].text);
-			}
-		}
+		string preview_text = SubTopicTMP().text;				
 		
-		string filename = string.Format("/{0}_SubTopicContents_{1}.json", m_name, AllXRData.user_session);
+		m_subtopic_contents.subtopic_name = preview_text;
+		Transform contents = Full.transform.Find("Content");
+		if(!contents)
+        {
+			Debug.Log("did not find the parent object of the TMPs");
+        }
+        else
+        {
+			TextMeshPro[] texts = contents.GetComponentsInChildren<TextMeshPro>(); // should return the name, 2-3 text points, and the time of the audio file
+			Debug.Log("found" + texts.Length + "TMPs under Content");
+			for (int i = 1; i < texts.Length - 1; i++)
+			{
+				m_subtopic_contents.subtopic_text.Add(texts[i].text);
+				Debug.Log(texts[i].text);
+			}
+				
+			string filename = string.Format("/{0}_subtopiccontents_{1}_{2}.json", LeftHandPresence.build_info, preview_text, lesson_model_name);
+			
+			System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
+			Debug.Log("Should have saved the JSON file for" + filename);
+		}		
+		
+    }	
 
-		System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_subtopic_contents));
-		Debug.Log("Should have made second attempt at saving JSON for" + filename);				
+	public TextMeshPro SubTopicTMP()
+    {
+		TextMeshPro tmp = Preview.GetComponentInChildren<TextMeshPro>();
+		return tmp;
+
 	}
 
 	public class SubTopicContents
@@ -231,17 +192,17 @@ public class SubTopic : MonoBehaviour
 
 	public void callback_firsthover(BaseInteractionEventArgs preview_index)
     {
-		parenet_LM.AssignNothingMaskForall(this);
-		parenet_LM.AssignPreviewIndex(this);
+		parent_LM.AssignNothingMaskForall(this);
+		parent_LM.AssignPreviewIndex(this);
     }
 
 	public void callback_lastexit(BaseInteractionEventArgs lastexit)
     {
-		parenet_LM.ReAssignDefaultMaskForAll();
+		parent_LM.ReAssignDefaultMaskForAll();
     }
 	public void callback_select(BaseInteractionEventArgs interactor_m)
     {
-		parenet_LM.AssignFullSubTopicIndex(this);
+		parent_LM.AssignFullSubTopicIndex(this);
 		DestroyPreview(interactor_m);
 		FullLesson();
 	}

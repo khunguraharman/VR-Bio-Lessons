@@ -34,19 +34,31 @@ public class FullSubTopicCard : MonoBehaviour
 
     void Update()
     {
-        if(!VoiceOver)
+        if(VoiceOver != null && VoiceOver.gameObject != null)
         {
-            if (VoiceOver.time == VoiceOver.clip.length) //if reaching end, switch pause sprite to play sprite
+            try
             {
-                playpausebool = 0;
-                PlayPauseBtnImg.sprite = PlayPauseImgs[playpausebool];
-                VoiceOver.time = 0;
-            }
+                if (VoiceOver.time == VoiceOver.clip.length) //if reaching end, switch pause sprite to play sprite
+                {
+                    playpausebool = 0;
+                    PlayPauseBtnImg.sprite = PlayPauseImgs[playpausebool];
+                    VoiceOver.time = 0;
+                }
 
-            if (!sliderselected)
-            {
-                AudioPlaybackSlider.value = VoiceOver.time;
+                if (!sliderselected)
+                {
+                    AudioPlaybackSlider.value = VoiceOver.time;
+                }
             }
+            catch(UnityException ex)
+            {
+                Debug.Log("Just ignore this error");
+            }
+            finally
+            {
+
+            }
+            
         }
         
                

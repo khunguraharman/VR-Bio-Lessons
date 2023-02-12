@@ -66,8 +66,7 @@ public class LeftHandPresence : MonoBehaviour
 
     public static float AnimationSpeed = 1f;
 
-    public static List<string> lesson_submenus_viewed = new List<string>(); // the menus of lessons viewed in the change lesson submenu
-    public static List<string> lesson_models_spawned = new List<string>(); // the lesson models instantiated
+    
     public static List<string> previews_spawned = new List<string>();
 
     public static string Chosen_Lesson_Model;

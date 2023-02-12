@@ -29,6 +29,10 @@ namespace SlimUI.ModernMenu{
 					message.GetComponent<TextMeshPro>().color = themeController.textColor;
 				}
 			}
+			catch(UnityException ex)
+            {
+				Debug.Log("Just ignore this error");
+            }
 			finally
             {
 

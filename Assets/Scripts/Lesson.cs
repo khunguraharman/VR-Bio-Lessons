@@ -16,7 +16,15 @@ public class Lesson : MonoBehaviour
 	{		
 		for(int i=0; i <Panels.Length; i++)
         {
-			Panels[i].SetActive(false);
+			if(i!=PanelNumber)
+            {
+				Panels[i].SetActive(false);
+			}
+            else
+            {
+				Panels[i].SetActive(true);
+            }
+			
         }        
 	}
 
@@ -47,7 +55,7 @@ public class Lesson : MonoBehaviour
 		System.IO.File.WriteAllText(Application.dataPath + filename, JsonUtility.ToJson(m_lesson_contents));
 	}
 
-	public TextMeshPro Get_Lesson_Name()
+	public TextMeshPro Get_TMPro_Object()
     {
 		TextMeshPro name = GetComponentInChildren<TextMeshPro>();
 		
@@ -76,12 +84,9 @@ public class Lesson : MonoBehaviour
 }
 
 public class LessonContents
-{
-		
+{		
 	public string[] lesson_summary = new string[3];
-	public string[] lesson_discussions = new string[3];
-
-		
+	public string[] lesson_discussions = new string[3];		
 }
 
 	
