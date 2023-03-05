@@ -88,8 +88,11 @@ public class XRMenu : MonoBehaviour
 	}      
 		
 	public static void PlayHover()
-	{			
-		hoverSound.Play();
+	{
+		if (hoverSound != null)
+        {
+			hoverSound.Play();
+		}		
 	}
 
 	public void SpawnChooseLecturer()
