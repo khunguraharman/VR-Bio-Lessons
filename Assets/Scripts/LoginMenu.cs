@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class LoginMenu : MonoBehaviour
 {    
@@ -76,7 +77,8 @@ public class LoginMenu : MonoBehaviour
                     Debug.Log(jsonResponse);
                     SuccessfulLogin successfulLogin = JsonUtility.FromJson<SuccessfulLogin>(jsonResponse);
                     MainMenu.login_session = successfulLogin;
-                    
+                    MainMenu.session_start_minute = int.Parse(successfulLogin.vrappsession_minute);
+                    SceneManager.LoadScene(1);
                 }
 
                 else if((int)request.responseCode == 400)

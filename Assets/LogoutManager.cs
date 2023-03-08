@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
+using UnityEngine.SceneManagement;
+using System;
 
 public class LogoutManager : MonoBehaviour
 {
@@ -33,11 +35,21 @@ public class LogoutManager : MonoBehaviour
         //Debug.Log(csrfRequest.GetResponseHeader("Set-Cookie"));
         Debug.Log("Token for logout:" + csrfToken);
 
+        DateTime year_start = new DateTime(2023, 1, 1);
+        TimeSpan total_timespan = DateTime.UtcNow - year_start;
+        Debug.Log((int)total_timespan.TotalMinutes);
+        int duration = MainMenu.session_start_minute - (int)total_timespan.TotalMinutes;
+        //int duration = (int) ((double)MainMenu.session_start_minute - total_timespan.TotalMinutes);
+        Debug.Log("The duration in minutes was calculated to be" + duration.ToString());
+
         string url = "http://127.0.0.1:8000/unitylogout/";
         
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
         formData.Add(new MultipartFormDataSection("X-CSRFToken", csrfToken));
-        formData.Add(new MultipartFormDataSection("session",  MainMenu.login_session.sessionID));
+        //formData.Add(new MultipartFormDataSection("session",  MainMenu.login_session.sessionID));
+        formData.Add(new MultipartFormDataSection("duration",  duration.ToString()));
+        //formData.Add(new MultipartFormDataSection("django_username",  MainMenu.login_session.username));
+        //formData.Add(new MultipartFormDataSection("minute_loggedin", MainMenu.login_session.vrappsession_minute));
 
         using (UnityWebRequest request = UnityWebRequest.Post(url, formData))
         {
@@ -61,7 +73,10 @@ public class LogoutManager : MonoBehaviour
             else
             {
                 Debug.Log("Logout request successful");
+                SceneManager.LoadScene(0);
             }
+
+            
         }
     }
 }
