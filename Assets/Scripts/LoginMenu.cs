@@ -39,12 +39,11 @@ public class LoginMenu : MonoBehaviour
         string csrfToken = csrfRequest.GetResponseHeader("Set-Cookie").Split(';')[0].Split('=')[1];
         Debug.Log(csrfRequest.GetResponseHeader("Set-Cookie"));
         Debug.Log(csrfToken);
-
         string url = "http://127.0.0.1:8000/unitylogin/";
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
         formData.Add(new MultipartFormDataSection("username", usernamefield.text));
-        formData.Add(new MultipartFormDataSection("password", passwordfield.text));
-        formData.Add(new MultipartFormDataSection("X-CSRFToken", csrfToken));
+        formData.Add(new MultipartFormDataSection("password", passwordfield.text));        
+        formData.Add(new MultipartFormDataSection("csrfmiddlewaretoken", csrfToken));
 
         using (UnityWebRequest request = UnityWebRequest.Post(url, formData))
         {
@@ -53,12 +52,6 @@ public class LoginMenu : MonoBehaviour
             request.redirectLimit = 0;
             request.timeout = 60;
 
-            for (int i=0; i<formData.Count; i++)
-            {
-                IMultipartFormSection valuepair = formData[i];
-                request.SetRequestHeader(valuepair.sectionName, Encoding.UTF8.GetString(valuepair.sectionData));
-
-            }
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success)
@@ -71,7 +64,6 @@ public class LoginMenu : MonoBehaviour
                 if ((int)request.responseCode == 200)
                 {
                     Debug.Log("Login successful!");
-
                     // Parse the JSON response and extract the authorization token
                     string jsonResponse = request.downloadHandler.text;
                     Debug.Log(jsonResponse);
@@ -89,26 +81,8 @@ public class LoginMenu : MonoBehaviour
                     Debug.Log(jsonResponse);
                 }
             }
-
         }
-        
-        
-        /*
-        if (request. || request.isHttpError)
-        {
-            Debug.LogError("Login failed: " + request.error);
-        }
-        else
-        {
-            Debug.Log("Login successful!");
-            // Handle the response data here
-        }
-
-        */
-
     }
-
-
 }
 
 [System.Serializable]
