@@ -9,6 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class LeftHandPresence : MonoBehaviour
 {
+    
     public static string build_info = "0_0_1";
     List<UnityEngine.XR.InputDevice> AllDevices = new List<UnityEngine.XR.InputDevice>();
 
@@ -64,15 +65,47 @@ public class LeftHandPresence : MonoBehaviour
     public static float FullLessonScale = 1f;
     public static Vector3 FullLessonDefaultScale;
 
-    public static float AnimationSpeed = 1f;
-
-    
-    
+    public static float AnimationSpeed = 1f;   
 
     public static string Chosen_Lesson_Model;
     public static string Chosen_subtopiccard;
 
-private void Awake()
+    [RuntimeInitializeOnLoadMethod]
+    static void ResetStatics()
+    {
+        build_info = "0_0_1";
+
+        LecturerIndex = 0;
+        PanelIndex = 0;
+        LessonIndex = 0;
+
+        existingmenu = null;
+
+        CurrentLesson = null;
+        CurrentLecturerFace = null;
+        CurrentSubTopicCard = null;
+        spawn_point = new Vector3(0.75f, 1.142f, 2.427f);
+        spawn_y = 0;
+        XZ_Boundary_Offset = new Vector2(1, 1);
+
+        CurrentPreview = null;
+        PreviewAnchor = null;        
+        FullCardAnchor = null;
+        OtherComponentsAnchor = null;
+        
+        AMG_UI = null;  
+        AMG_VO = null;
+
+        LessonModelScale = 1f;
+        LessonModelDefaultScale = Vector3.one;
+        PreviewScale = 1f;
+        PreviewDefaultScale = Vector3.one;
+        FullLessonDefaultScale = Vector3.one;
+        FullLessonScale = 1f;
+        Chosen_Lesson_Model = null;
+        Chosen_subtopiccard = null;
+    }
+    private void Awake()
     {
         AMG_UI = AMG_UI_object;
         AMG_VO = AMG_VO_object;
@@ -85,13 +118,7 @@ private void Awake()
         //SpawnableModels = LessonModels;
         XRRayInteractor LeftHandInteractable = gameObject.GetComponent<XRRayInteractor>();
         Debug.Log("The LH controller interaction mask is " + LeftHandInteractable.interactionLayers); // does this output a string that is the name or an int that is the value property?
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    }    
 
     // Update is called once per frame
     void FixedUpdate()

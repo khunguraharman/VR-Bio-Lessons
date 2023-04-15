@@ -7,13 +7,11 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class LogoutManager : MonoBehaviour
-{
-    
+{    
     private void OnApplicationQuit()
     {
         StartCoroutine(SendLogoutRequest());
     }
-
 
     public void Logout()
     {
@@ -22,7 +20,8 @@ public class LogoutManager : MonoBehaviour
 
     private IEnumerator SendLogoutRequest()
     {
-        UnityWebRequest csrfRequest = UnityWebRequest.Get("http://127.0.0.1:8000/gettoken/");
+        UnityWebRequest csrfRequest = UnityWebRequest.Get("https://anatomicus.ca/gettoken/");
+        csrfRequest.SetRequestHeader("Referer", "https://anatomicus.ca");
         yield return csrfRequest.SendWebRequest();
 
         if (csrfRequest.result != UnityWebRequest.Result.Success)
@@ -33,11 +32,9 @@ public class LogoutManager : MonoBehaviour
 
         string csrfToken = csrfRequest.GetResponseHeader("Set-Cookie").Split(';')[0].Split('=')[1];
         //Debug.Log(csrfRequest.GetResponseHeader("Set-Cookie"));
-        Debug.Log("Token for logout:" + csrfToken);
+        Debug.Log("Token for logout:" + csrfToken);        
 
-        
-
-        string url = "http://127.0.0.1:8000/unitylogout/";
+        string url = "https://anatomicus.ca/unitylogout/";
         
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();        
         formData.Add(new MultipartFormDataSection("csrfmiddlewaretoken", csrfToken));
@@ -45,6 +42,7 @@ public class LogoutManager : MonoBehaviour
         using (UnityWebRequest request = UnityWebRequest.Post(url, formData))
         {
             request.SetRequestHeader("User-Agent", "XRBioClient");
+            request.SetRequestHeader("Referer", "https://anatomicus.ca");
             request.downloadHandler = new DownloadHandlerBuffer();
             request.redirectLimit = 0;
             request.timeout = 60;
@@ -59,9 +57,7 @@ public class LogoutManager : MonoBehaviour
             {
                 Debug.Log("Logout request successful");
                 SceneManager.LoadScene(0);
-            }
-
-            
+            }            
         }
     }
 }

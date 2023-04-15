@@ -8,7 +8,7 @@ using Amazon.S3.Model;
 using System.Threading.Tasks;
 using Amazon.Runtime;
 using TMPro;
-using System.Linq; 
+using System.Linq;
 
 public class TransferFiles : MonoBehaviour
 {
@@ -24,20 +24,24 @@ public class TransferFiles : MonoBehaviour
     private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast1;
     public static string ProjectBucketName { get; private set; }
     public static S3Bucket ProjectBucket { get; private set; }
-    public string[] S3_lessonsummary_json  { get; private set; }
+    public string[] S3_lessonsummary_json { get; private set; }
     public string[] S3_subtopiccontents_json { get; private set; }
 
     private AmazonS3Client s3Client;
-    private TransferUtility transferUtility;      
-    // Start is called before the first frame update
+    private TransferUtility transferUtility;
+    [RuntimeInitializeOnLoadMethod]
+    static void ResetStatics()
+    {        
+        Update_Lessons = false;
+        Perform_UpdateCheck = true;
+        ProjectBucketName = string.Empty;
+        ProjectBucket = null;
+    }
     private void Awake()
     {
-        
         s3Client = new AmazonS3Client(bucketRegion);
         transferUtility = new TransferUtility(s3Client);
-        GetS3MetaData();    
-
-        
+        GetS3MetaData();
     }
 
     public async void GetS3MetaData()
@@ -116,7 +120,7 @@ public class TransferFiles : MonoBehaviour
             TextMeshPro lesson_tmp = Lessons[i].Get_TMPro_Object();
             string lesson_m = lesson_tmp.text; //all the lessons in the current build 
             SubTopic[] subtopics = Models[i].Components;
-            for(int j=0; j<subtopics.Length; j++)
+            for (int j = 0; j < subtopics.Length; j++)
             {
                 string subtopic_name = subtopics[j].SubTopicTMP().text;
                 string search_for = LeftHandPresence.build_info + "_subtopiccontents_" + subtopic_name + "_" + lesson_m + ".json";// e.g 0_0_1_subtopiccontents_Nucleus_Animal Cell.json
@@ -135,11 +139,12 @@ public class TransferFiles : MonoBehaviour
                 }
             }
         }
-
     }
+}
+   
 
     
-}
+
 
     
     

@@ -6,8 +6,15 @@ using TMPro;
 using System.IO;
 using SlimUI.ModernMenu;
 using UnityEngine.InputSystem.XR;
-using System.Security;
+using System.Text;
 using System;
+using System.Threading.Tasks;
+using Amazon.KinesisFirehose;
+using Amazon.KinesisFirehose.Model;
+using Amazon;
+using Amazon.S3;
+using Amazon.S3.Model;
+
 
 public class AllXRData : MonoBehaviour
 {
@@ -20,10 +27,32 @@ public class AllXRData : MonoBehaviour
     private InputFeatureUsage<Vector3>[] Positions = new InputFeatureUsage<Vector3>[5] { CommonUsages.centerEyePosition, CommonUsages.leftEyePosition, CommonUsages.rightEyePosition, CommonUsages.devicePosition, CommonUsages.devicePosition };
     private InputFeatureUsage<Quaternion>[] Rotations = new InputFeatureUsage<Quaternion>[5] { CommonUsages.centerEyeRotation, CommonUsages.leftEyeRotation, CommonUsages.rightEyeRotation, CommonUsages.deviceRotation, CommonUsages.deviceRotation };
     private Vector3[] Position_Values = new Vector3[5];
-    private Quaternion[] Rotation_Values = new Quaternion[5];         
-    
+    private Quaternion[] Rotation_Values = new Quaternion[5];
+    public AmazonKinesisFirehoseClient firhoseclient { get; private set; }
+    public RegionEndpoint region { get; private set; }
+    private AmazonS3Client s3Client;
+    public static S3Bucket ProjectBucket { get; private set; }
+    int numRows = 1000;
+    int numCols = 40;
+    private string streamname;
+    public float[,] XRdataArray { get; private set; }
+    int rowIndex = 0;
+
+    private string header = string.Empty;
+
+    [RuntimeInitializeOnLoadMethod]
+    static void ResetStatics()
+    {
+        ProjectBucket = null;
+        user_session = string.Empty;
+    }
+
     void Awake()
     {
+        streamname = Environment.GetEnvironmentVariable("KinesisFirehoseStreamName");
+        //await SetSet3DestinationAsync();
+        
+        XRdataArray = new float[numRows, numCols];
         Debug.Log("Username is: " + userName);
         DateTime year_start = new DateTime(2023, 1, 1);
         TimeSpan total_minutes = DateTime.Now - year_start; 
@@ -31,7 +60,7 @@ public class AllXRData : MonoBehaviour
         string outputfile = string.Format("{0}viewinghistory.txt", user_session);
         writeXRdata = new StreamWriter(Path.Combine(Application.dataPath,outputfile), append: false);
         
-        string header = "";
+        header = "";
 
         header += string.Format("Time\tHeadset_on\t");        
 
@@ -59,8 +88,7 @@ public class AllXRData : MonoBehaviour
 
         prefixes = new string[1] { "Model_"};
         suffixes = new string[3] { "Name", "Centre", "Size" };
-
-        
+                
         for(int j =0; j<suffixes.Length;j++)
         {
             header += string.Format("{0}\t", prefixes[0] + suffixes[j]);
@@ -74,23 +102,35 @@ public class AllXRData : MonoBehaviour
             header += string.Format("{0}\t", prefixes[0] + suffixes[i]);
         }
 
+        prefixes = new string[1] { "OtherComponentsMenu_" };
+        suffixes = new string[2] { "Exists", "Corners" };
+
+        for (int i = 0; i < suffixes.Length; i++)
+        {
+            header += string.Format("{0}\t", prefixes[0] + suffixes[i]);
+        }
+
+        MemoryStream header_stream = String_to_Stream(header);
+        //await PutRecordAsync(header_stream);
+        
         writeXRdata.WriteLine(header);
         //writeXRdata.WriteLine("CE_Pos\tCE_Rot\tCE_V\tCE_omega\tLE_Pos\tLE_Rot\tLE_V\tLE_omega\tRE_Pos\tRE_Rot\tRE_V\tRE_omega\tLH_Pos\tLH_Rot\tLH_V\tLH_omega\tRH_Pos\tRH_Rot\tRH_V\tRH_omega");
-        writeXRdata.Flush();        
+        writeXRdata.Flush();    
+        
     }
 
     private void Start()
     {
-        Write_Data();
+        Get_Data();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Write_Data();
+        Get_Data();
     } 
 
-    private void Write_Data()
+    private void Get_Data()
     {
         string the_Data = "";
         bool headset_tracked;        
@@ -188,7 +228,111 @@ public class AllXRData : MonoBehaviour
         string card_corners = string.Join(",", SubTopicCard_Corners);
         the_Data += string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t", active_lesson_model, Lesson_model_bounds[0], Lesson_model_bounds[1], active_preview, preview_corners, active_subtopic_card, card_corners) ;
 
+        if(LeftHandPresence.OtherComponentsAnchor != null && LeftHandPresence.OtherComponentsAnchor.gameObject.activeInHierarchy && LeftHandPresence.OtherComponentsAnchor.GetComponentInChildren<RectTransform>() != null)
+        {
+            RectTransform rect_transform = LeftHandPresence.OtherComponentsAnchor.GetComponentInChildren<RectTransform>();
+            Vector3[] OtherMenu_Bounds = new Vector3[4];
+            rect_transform.GetWorldCorners(OtherMenu_Bounds);
+            string othermenu_corners = string.Join(",", OtherMenu_Bounds);
+            the_Data += string.Format("{0}\t{1}", 1, othermenu_corners);
+        }
+
+        else
+        {
+            the_Data += string.Format("{0}\t{1}", 0, 0 );
+        }
+
         writeXRdata.WriteLine(the_Data);
         writeXRdata.Flush();        
-    }    
+    }
+
+    private async Task SetSet3DestinationAsync()
+    {
+        string roleARN = Environment.GetEnvironmentVariable("RoleARN");
+        region = RegionEndpoint.USEast1;
+        Debug.Log("roleARN is: " + roleARN);
+        s3Client = new AmazonS3Client(region);
+        ListBucketsResponse buckets = await s3Client.ListBucketsAsync();
+        
+        firhoseclient = new AmazonKinesisFirehoseClient(region);        
+        Debug.Log("stream name is: " + streamname);
+
+        DescribeDeliveryStreamRequest desc_stream_request = new DescribeDeliveryStreamRequest
+        {
+            DeliveryStreamName = streamname
+        };
+
+        DescribeDeliveryStreamResponse stream_description_resp = await firhoseclient.DescribeDeliveryStreamAsync(desc_stream_request);
+        Debug.Log("DestinationID: " + stream_description_resp.DeliveryStreamDescription.Destinations[0].DestinationId);
+        Debug.Log("StreamVersionID: " + stream_description_resp.DeliveryStreamDescription.VersionId);
+        ProjectBucket = buckets.Buckets[0];
+        string bucketARN = string.Format("arn:aws:s3:::{0}", ProjectBucket.BucketName);
+        Debug.Log("Bucket ARN: " + bucketARN);
+        ExtendedS3DestinationUpdate s3destionationconfig = new ExtendedS3DestinationUpdate
+        {
+            BucketARN = bucketARN,
+            RoleARN = roleARN,
+            Prefix = string.Format("SessionData/{0}/", MainMenu.login_session.username),
+            /*
+            BufferingHints = new BufferingHints
+            {
+                SizeInMBs = 128,
+                IntervalInSeconds = 60,
+            }
+            */
+        };            
+
+        UpdateDestinationRequest updateDestinationRequest = new UpdateDestinationRequest
+        {            
+            DeliveryStreamName = streamname,            
+            ExtendedS3DestinationUpdate = s3destionationconfig,
+            CurrentDeliveryStreamVersionId = stream_description_resp.DeliveryStreamDescription.VersionId,
+            DestinationId = stream_description_resp.DeliveryStreamDescription.Destinations[0].DestinationId
+        };
+
+        await firhoseclient.UpdateDestinationAsync(updateDestinationRequest);
+        /*
+        byte[] data = Encoding.UTF8.GetBytes(header); // the array data
+        MemoryStream stream = new MemoryStream(data);
+
+        Record XR_Record = new Record
+        {
+            Data = stream,
+        };
+        //string streamname = Environment.GetEnvironmentVariable("KinesisFirehoseStreamName");
+        PutRecordRequest request = new PutRecordRequest
+        {
+            DeliveryStreamName = streamname,
+            Record = XR_Record,
+        };
+
+        await firhoseclient.PutRecordAsync(request);
+        Debug.Log("Put Record Sent");
+        */
+    }
+
+    private MemoryStream String_to_Stream(string titles)
+    {
+        byte[] data = Encoding.UTF8.GetBytes(titles); // the array data
+        MemoryStream stream = new MemoryStream(data);
+        return stream;
+    }
+
+    private async Task PutRecordAsync(MemoryStream stream)
+    {
+        Record XR_Record = new Record
+        {
+            Data = stream,
+        };
+        //string streamname = Environment.GetEnvironmentVariable("KinesisFirehoseStreamName");
+        PutRecordRequest request = new PutRecordRequest
+        {
+            DeliveryStreamName = streamname,
+            Record = XR_Record,
+            
+        };
+        await firhoseclient.PutRecordAsync(request);
+        Debug.Log("Put Record Sent");
+    }
+    
 }

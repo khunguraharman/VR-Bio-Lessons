@@ -61,6 +61,15 @@ public class XRMenu : MonoBehaviour
 	private bool sounds_disabled = true;
 	private System.DateTime current_time;
 	*/
+
+	[RuntimeInitializeOnLoadMethod]
+	static void ResetStatics()
+	{
+        ChosenLesson = LeftHandPresence.LessonIndex;
+        ChosenPanel = LeftHandPresence.PanelIndex;
+        ChosenLecturer = LeftHandPresence.LecturerIndex;        
+    }
+
     void Awake()
     {
 		hoverSound = Hoversound; 
@@ -70,9 +79,6 @@ public class XRMenu : MonoBehaviour
 		delta = Time.fixedDeltaTime;
 	}
 
-    void Start()
-	{	
-	}
 
     void FixedUpdate()
     {

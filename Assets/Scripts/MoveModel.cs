@@ -44,7 +44,7 @@ public class MoveModel : MonoBehaviour
         {
             int i = 0;
             float move_LR = scalors[i] * command[0];
-            while ((gameObject.transform.position.x + move_LR >= X_bounds[0] || gameObject.transform.position.x + move_LR <= X_bounds[1]) && i < scalors.Length) 
+            while ((gameObject.transform.position.x + move_LR >= X_bounds[0] || gameObject.transform.position.x + move_LR <= X_bounds[1]) && i < scalors.Length-1) 
             {
                 i++;
                 move_LR = scalors[i] * command[0];
@@ -52,7 +52,7 @@ public class MoveModel : MonoBehaviour
 
             i = 0;
             float move_UD = scalors[i] * command[1];
-            while ((gameObject.transform.position.z + move_UD >= Z_bounds[0] || gameObject.transform.position.z + move_UD <= Z_bounds[1]) && i < scalors.Length)
+            while ((gameObject.transform.position.z + move_UD >= Z_bounds[0] || gameObject.transform.position.z + move_UD <= Z_bounds[1]) && i < scalors.Length-1)
             {
                 i++;
                 move_LR = scalors[i] * command[1];
