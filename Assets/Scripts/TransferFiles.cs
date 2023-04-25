@@ -29,6 +29,7 @@ public class TransferFiles : MonoBehaviour
 
     private AmazonS3Client s3Client;
     private TransferUtility transferUtility;
+    /*
     [RuntimeInitializeOnLoadMethod]
     static void ResetStatics()
     {        
@@ -37,6 +38,7 @@ public class TransferFiles : MonoBehaviour
         ProjectBucketName = string.Empty;
         ProjectBucket = null;
     }
+    */
     private void Awake()
     {
         s3Client = new AmazonS3Client(bucketRegion);

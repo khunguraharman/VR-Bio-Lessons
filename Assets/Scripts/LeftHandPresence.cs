@@ -69,7 +69,7 @@ public class LeftHandPresence : MonoBehaviour
 
     public static string Chosen_Lesson_Model;
     public static string Chosen_subtopiccard;
-
+    /*
     [RuntimeInitializeOnLoadMethod]
     static void ResetStatics()
     {
@@ -89,7 +89,8 @@ public class LeftHandPresence : MonoBehaviour
         XZ_Boundary_Offset = new Vector2(1, 1);
 
         CurrentPreview = null;
-        PreviewAnchor = null;        
+        PreviewAnchor = null;
+        PreviewAnchor_Rot = Quaternion.identity;
         FullCardAnchor = null;
         OtherComponentsAnchor = null;
         
@@ -105,6 +106,7 @@ public class LeftHandPresence : MonoBehaviour
         Chosen_Lesson_Model = null;
         Chosen_subtopiccard = null;
     }
+    */
     private void Awake()
     {
         AMG_UI = AMG_UI_object;

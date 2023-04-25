@@ -12,12 +12,14 @@ public class MainMenu : MonoBehaviour
     public static SuccessfulLogin login_session = null;
     public static int session_start_minute = 0;
 
+    /*
     [RuntimeInitializeOnLoadMethod]
     static void ResetStatics()
     {
         login_session = null;
         session_start_minute = 0;
     }
+    */
 
     // Start is called before the first frame update
     private void Awake()

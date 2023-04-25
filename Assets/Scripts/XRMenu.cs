@@ -62,6 +62,7 @@ public class XRMenu : MonoBehaviour
 	private System.DateTime current_time;
 	*/
 
+	/*
 	[RuntimeInitializeOnLoadMethod]
 	static void ResetStatics()
 	{
@@ -69,6 +70,7 @@ public class XRMenu : MonoBehaviour
         ChosenPanel = LeftHandPresence.PanelIndex;
         ChosenLecturer = LeftHandPresence.LecturerIndex;        
     }
+	*/
 
     void Awake()
     {

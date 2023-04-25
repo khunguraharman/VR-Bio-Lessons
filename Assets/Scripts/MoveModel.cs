@@ -27,8 +27,7 @@ public class MoveModel : MonoBehaviour
         Z_bounds[1] = LeftHandPresence.spawn_point.z - XZBounds.y;
         Debug.Log("X bounds are: " + X_bounds);
         Debug.Log("Y bounds are: " + Z_bounds);
-    }
-    
+    }   
 
     // Update is called once per frame
     void FixedUpdate()
