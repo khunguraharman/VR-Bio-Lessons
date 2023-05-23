@@ -108,12 +108,25 @@ public class FullSubTopicCard : MonoBehaviour
         Debug.Log("Audio file being requested is of sub topic index: " + SubTopicIndex);
         if(SubTopicIndex< LeftHandPresence.CurrentLesson.ChosenLecturer.SubTopicVoiceOvers.Length)
         {
-            VoiceOver = LeftHandPresence.CurrentLesson.ChosenLecturer.SubTopicVoiceOvers[SubTopicIndex];
+            try
+            {
+                VoiceOver = LeftHandPresence.CurrentLesson.ChosenLecturer.SubTopicVoiceOvers[SubTopicIndex];
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                VoiceOver = null;
+                Debug.Log("The voice over is missing and is being assigned null");
+            }
+            finally
+            {
+                Debug.Log("Caught Index out of range error");
+            }
+            
         }
         else
         {
             VoiceOver = null;
-            Debug.Log("The voice over is missing");
+            Debug.Log("The voice over is missing and is being assigned null");
         }
         try
         {

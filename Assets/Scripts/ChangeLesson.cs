@@ -28,8 +28,7 @@ public class ChangeLesson : MonoBehaviour
 
 	
 	void  Awake ()
-	{
-		
+	{		
 		TotalLessons = Lessons.Length;
 		for(int i=0; i<Lessons.Length;i++)
         {
@@ -76,22 +75,52 @@ public class ChangeLesson : MonoBehaviour
 			
 		else if (LessonIndex != LeftHandPresence.LessonIndex && LeftHandPresence.CurrentLesson) // only run if the model has been changed
 		{
+			Debug.Log("You want to change the lesson model");
+
 			Destroy(LeftHandPresence.CurrentLesson.gameObject);
 
-			if (LeftHandPresence.CurrentSubTopicCard)
+            int count = LeftHandPresence.FullCardAnchor.childCount;
+            if (count != 0)
+            {
+                Debug.Log("Destorying Subtopic Card");
+                for (int i = 0; i < count; i++)
+                {
+                    Destroy(LeftHandPresence.FullCardAnchor.GetChild(i).gameObject);
+                }
+            }
+            /*
+            if (!LeftHandPresence.CurrentSubTopicCard.gameObject.activeInHierarchy)
 			{
-				Destroy(LeftHandPresence.CurrentSubTopicCard);
-			}
+                Destroy(LeftHandPresence.CurrentSubTopicCard.gameObject);
+            }
+			*/
 
-			if (LeftHandPresence.CurrentPreview)
+            count = LeftHandPresence.PreviewAnchor.childCount;
+            if (count != 0)
+            {
+                Debug.Log("Destorying Previews");
+                for (int i = 0; i < count; i++)
+                {
+                    Destroy(LeftHandPresence.PreviewAnchor.GetChild(i).gameObject);
+                }
+            }
+			/*
+            if (!LeftHandPresence.CurrentPreview.gameObject.activeInHierarchy)
 			{
-				Destroy(LeftHandPresence.CurrentPreview);
-			}
+                Destroy(LeftHandPresence.CurrentPreview.gameObject);
+            }		
+			*/
+			Debug.Log("The previous model, subtopic card and preview were destoryed because you confirmed a new lesson");
             try
             {
-				if (LeftHandPresence.OtherComponentsAnchor.GetChild(0).gameObject)
+                count = LeftHandPresence.OtherComponentsAnchor.childCount;
+                if (count != 0)
 				{
-					Destroy(LeftHandPresence.OtherComponentsAnchor.GetChild(0).gameObject);
+					Debug.Log("Destorying Other Components Menu Objects");
+					for(int i = 0; i < count; i++) 
+					{
+                        Destroy(LeftHandPresence.OtherComponentsAnchor.GetChild(i).gameObject);
+                    }                    
 				}
 			}	
 			catch(UnityException ex)
@@ -114,7 +143,9 @@ public class ChangeLesson : MonoBehaviour
 		
 
 		Destroy(gameObject);
-		XRMenu.DestroyMainMenu();		
+		Debug.Log("Destroyed the lesson menu and attempting to destroy the main menu");
+		XRMenu.DestroyMainMenu();	
+		
 	}
 
 	public void Close()

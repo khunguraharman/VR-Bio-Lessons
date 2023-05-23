@@ -40,7 +40,7 @@ public class LogoutManager : MonoBehaviour
         formData.Add(new MultipartFormDataSection("csrfmiddlewaretoken", csrfToken));
 
         using (UnityWebRequest request = UnityWebRequest.Post(url, formData))
-        {
+        {            
             request.SetRequestHeader("User-Agent", "XRBioClient");
             request.SetRequestHeader("Referer", "https://anatomicus.ca");
             request.downloadHandler = new DownloadHandlerBuffer();

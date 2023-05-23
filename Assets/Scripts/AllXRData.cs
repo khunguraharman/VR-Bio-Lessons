@@ -268,5 +268,11 @@ public class AllXRData : MonoBehaviour
         //writeXRdata.Flush();        
     }
 
-       
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Sending PUT request on application close");
+        UploadData(the_Data);
+    }
+
+
 }

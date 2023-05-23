@@ -199,10 +199,24 @@ public class LeftHandPresence : MonoBehaviour
             if (CurrentSubTopicCard && CurrentSubTopicCard.isActiveAndEnabled != new_state)
             {
                 CurrentSubTopicCard.gameObject.SetActive(new_state);
-                if (CurrentSubTopicCard.VoiceOver.isPlaying)
+                try
                 {
-                    CurrentSubTopicCard.PlayPauseVoiceOver();
+                    if (CurrentSubTopicCard.VoiceOver.isPlaying)
+                    {
+                        CurrentSubTopicCard.PlayPauseVoiceOver();
+                    }
                 }
+                catch (NullReferenceException e)
+                {
+                    Debug.Log("The Voiceover doesn't exist");
+                }
+
+                finally
+                {
+
+                }
+                Debug.Log("The Voiceover code block succeeded");
+                
             }
 
             if (CurrentPreview)

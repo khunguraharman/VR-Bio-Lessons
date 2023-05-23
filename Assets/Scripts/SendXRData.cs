@@ -65,7 +65,7 @@ public class SendXRData : MonoBehaviour
         {
             BucketARN = bucketARN,
             RoleARN = roleARN,
-            Prefix = string.Format("SessionData/{0}/", "Developing"),
+            Prefix = string.Format("SessionData/{0}/", MainMenu.login_session.username),
             //Prefix = string.Format("SessionData/{0}/", MainMenu.login_session.username),
             /*
             BufferingHints = new BufferingHints

@@ -238,7 +238,7 @@ public class XRMenu : MonoBehaviour
 
 	public static void DestroyMainMenu()
     {
-		/*
+        /*
 		if(LeftHandPresence.CurrentLesson)
         {
 			LeftHandPresence.CurrentLesson.gameObject.SetActive(true);
@@ -256,8 +256,12 @@ public class XRMenu : MonoBehaviour
 			LeftHandPresence.OtherComponentsAnchor.gameObject.SetActive(true);
         }
 		*/
-		LeftHandPresence.Enable_Lesson_Contents(true);
-		Destroy(LeftHandPresence.existingmenu.gameObject);
+        Destroy(LeftHandPresence.existingmenu.gameObject);
+        Debug.Log("Hand menu should have been destroyed");
+        LeftHandPresence.Enable_Lesson_Contents(true);
+		
+		
+		
     }
 		
 	public void QuitGame()
