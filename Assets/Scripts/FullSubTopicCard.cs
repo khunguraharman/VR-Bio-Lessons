@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using System; 
+using System;
 
-
+[RequireComponent(typeof(Cognitive3D.DynamicObject))]
 public class FullSubTopicCard : MonoBehaviour
 {
     public TextMeshPro DisplayTime; 

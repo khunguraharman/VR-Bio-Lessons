@@ -109,6 +109,8 @@ public class LeftHandPresence : MonoBehaviour
     */
     private void Awake()
     {
+        CheckDevices_AssignModels();
+
         AMG_UI = AMG_UI_object;
         AMG_VO = AMG_VO_object;
         OtherComponentsAnchor = OtherComponentsObject.transform; 
@@ -120,13 +122,12 @@ public class LeftHandPresence : MonoBehaviour
         //SpawnableModels = LessonModels;
         XRRayInteractor LeftHandInteractable = gameObject.GetComponent<XRRayInteractor>();
         Debug.Log("The LH controller interaction mask is " + LeftHandInteractable.interactionLayers); // does this output a string that is the name or an int that is the value property?
+
     }    
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-
-        CheckDevices_AssignModels();
+    {       
 
         Spawn_XRMenu();        
         
@@ -187,6 +188,7 @@ public class LeftHandPresence : MonoBehaviour
             existingmenu.InheritLecturerandPanelIndex(LecturerIndex, PanelIndex);
             existingmenu.InheritLesson(LessonIndex);
              */
+            
         }
     }
 

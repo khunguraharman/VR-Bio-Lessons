@@ -72,6 +72,7 @@ public class MoveModel : MonoBehaviour
             */
             Vector3 translation = new Vector3(move_LR, 0, move_UD);
             gameObject.transform.Translate(0.02f * translation, Space.World);
+            //new Cognitive3D.CustomEvent("Translated Model").SetProperties(new Dictionary<string, object> { { "Model Position", "Model Translation" } }).Send(gameObject.transform.position);
         }
     }
 
@@ -90,6 +91,8 @@ public class MoveModel : MonoBehaviour
             {
                 gameObject.transform.RotateAround(gameObject.transform.position, Vector3.right, 0.5f * command[1]);
             }
+
+            //new Cognitive3D.CustomEvent("Rotated Model").SetProperties(new Dictionary<string, object> { { "Model Orientation", "Model Rotation" } }).Send(gameObject.transform.eulerAngles);
 
             LeftHandPresence.CurrentLesson.UpdateModelBounds();
         }

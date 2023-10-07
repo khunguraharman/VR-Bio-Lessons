@@ -1,0 +1,131 @@
+*****************************
+***********SYSTEM************
+*****************************
+Unity Version:2021.3.7f1
+OS:Windows 11  (10.0.22621) 64bit
+System Time: 2023-09-14 4:53:45 PM
+
+*****************************
+***********PROJECT***********
+*****************************
+Scripting Define Symbols: C3D_DEFAULT
+Packages:
+  com.cognitive3d.c3d-sdk 1.3.3
+  com.unity.addressables 1.19.19
+  com.unity.ide.rider 3.0.15
+  com.unity.ide.visualstudio 2.0.17
+  com.unity.probuilder 5.0.6
+  com.unity.recorder 3.0.3
+  com.unity.render-pipelines.universal 12.1.7
+  com.unity.test-framework 1.1.33
+  com.unity.textmeshpro 3.0.6
+  com.unity.timeline 1.6.4
+  com.unity.ugui 1.0.0
+  com.unity.visualscripting 1.7.8
+  com.unity.xr.arcore 4.2.3
+  com.unity.xr.interaction.toolkit 2.1.0-pre.1
+  com.unity.xr.management 4.2.1
+  com.unity.xr.oculus 3.0.2
+  com.unity.xr.openxr 1.4.2
+  com.unity.modules.ai 1.0.0
+  com.unity.modules.androidjni 1.0.0
+  com.unity.modules.animation 1.0.0
+  com.unity.modules.assetbundle 1.0.0
+  com.unity.modules.audio 1.0.0
+  com.unity.modules.cloth 1.0.0
+  com.unity.modules.director 1.0.0
+  com.unity.modules.imageconversion 1.0.0
+  com.unity.modules.imgui 1.0.0
+  com.unity.modules.jsonserialize 1.0.0
+  com.unity.modules.particlesystem 1.0.0
+  com.unity.modules.physics 1.0.0
+  com.unity.modules.physics2d 1.0.0
+  com.unity.modules.screencapture 1.0.0
+  com.unity.modules.terrain 1.0.0
+  com.unity.modules.terrainphysics 1.0.0
+  com.unity.modules.tilemap 1.0.0
+  com.unity.modules.ui 1.0.0
+  com.unity.modules.uielements 1.0.0
+  com.unity.modules.umbra 1.0.0
+  com.unity.modules.unityanalytics 1.0.0
+  com.unity.modules.unitywebrequest 1.0.0
+  com.unity.modules.unitywebrequestassetbundle 1.0.0
+  com.unity.modules.unitywebrequestaudio 1.0.0
+  com.unity.modules.unitywebrequesttexture 1.0.0
+  com.unity.modules.unitywebrequestwww 1.0.0
+  com.unity.modules.vehicles 1.0.0
+  com.unity.modules.video 1.0.0
+  com.unity.modules.vr 1.0.0
+  com.unity.modules.wind 1.0.0
+  com.unity.modules.xr 1.0.0
+SDK Version: 1.3.3
+Api Key: ****8UDM
+Developer Key: ****IDGR
+Enable Logging: True
+Enable Development Logging: False
+Gaze Type: Physics
+Snapshot Interval: 0.1
+Dynamic Object Search in Parent: True
+Dynamic Object Layer Mask: -1
+Track GPS Location: False
+GPS Accuracy: 2
+Record Floor Position: True
+Automatic Send Timer: 10
+Gaze Snapshot Batch Size: 64
+Event Snapshot Batch Size: 64
+Dynamic Snapshot Batch Size: 128
+Sensor Snapshot Batch Size: 128
+Fixation Snapshot Batch Size: 64
+Save Data to Local Cache if no internet connection: True
+Cache Size (bytes): 104857600
+Cache Size (mb): 100.0 MB
+Custom Protocol: https
+Custom Gateway: data.cognitive3d.com
+Custom Viewer: viewer.cognitive3d.com/scene/
+Custom Dashboard: app.cognitive3d.com
+Texture Export Quality: 1
+Export Lowest LOD from LODGroup Components: True
+Scene Settings:
+  └─Bio Lessons
+     ├─Scene Id: 
+     ├─Scene Path: Assets/Scenes/Bio Lessons.unity
+     ├─Last Revision: 
+     ├─Version Number: 0
+     └─Version Id: 0
+
+*****************************
+********CURRENT SCENE********
+*****************************
+Scene Name: Bio Lessons
+Scene Id: 
+Scene Path: Assets/Scenes/Bio Lessons.unity
+Last Revision: 
+Version Number: 0
+Version Id: 0
+Scene Size (mb): 0.94
+Main Camera GameObject: Main Camera
+Manager Initialize On Start: True
+Manager Startup Delay Time (s): 0
+
+*****************************
+****CURRENT SCENE OBJECTS****
+*****************************
+Dynamic Object Count: 2
+  ├─RightHand Controller
+  │  ├─Mesh Name: righthand_controller
+  │  ├─Has Collider: false
+  │  └─Has Children: false
+  └─LeftHand Controller
+     ├─Mesh Name: lefthand_controller
+     ├─Has Collider: false
+     └─Has Children: false
+
+*****************************
+********EXPORT FOLDER********
+*****************************
+/Cognitive3D_SceneExplorerExport (1mb)
+   /Bio Lessons (0.94mb)
+      371857150New_Terrain_4Main.png (0.00mb)
+      scene.bin (0.93mb)
+      scene.gltf (0.01mb)
+      settings.json (0.00mb)

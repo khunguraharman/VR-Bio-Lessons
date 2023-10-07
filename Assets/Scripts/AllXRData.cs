@@ -48,6 +48,8 @@ public class AllXRData : MonoBehaviour
         this.UploadData = async (string stringdata) => await uploadmethod(stringdata);
     }
 
+    
+
     void Awake()
     {
         batch_rows = 1000;
@@ -148,13 +150,11 @@ public class AllXRData : MonoBehaviour
             Debug.Log("Resetting Data");
             the_Data = "";
             data_counter = 0;
-        }
-        
+        }        
     } 
 
     private void Get_Data()
-    {        
-        
+    {           
         bool headset_tracked;        
         
         Devices[0].TryGetFeatureValue(CommonUsages.userPresence, out headset_tracked);

@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "com.cognitive3d.c3d-sdk": {
+      "version": "https://github.com/CognitiveVR/cvr-sdk-unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.xr.legacyinputhelpers": "2.1.7",
+        "com.unity.xr.management": "4.2.1"
+      },
+      "hash": "73abec17918cf62da80ec40300131fd0ebd52afd"
+    },
     "com.unity.addressables": {
       "version": "1.19.19",
       "depth": 0,

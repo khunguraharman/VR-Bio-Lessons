@@ -1,0 +1,1006 @@
+{
+  "extensionsUsed": [
+    "KHR_lights_punctual"
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 32,
+      "type": "VEC3",
+      "max": [
+        5.0330257415771484,
+        0.082782983779907227,
+        0.0
+      ],
+      "min": [
+        -0.48688936233520508,
+        -1.0336942672729492,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 32,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 32,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 32,
+      "type": "VEC2",
+      "max": [
+        0.98431396484375,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.00689697265625
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 32,
+      "type": "VEC2",
+      "max": [
+        2093567.0,
+        1.0170454978942871
+      ],
+      "min": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5121,
+      "count": 48,
+      "type": "SCALAR",
+      "max": [
+        31.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 148,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        4.1823053359985352,
+        0.0
+      ],
+      "min": [
+        -17.395282745361328,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 148,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 148,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 148,
+      "type": "VEC2",
+      "max": [
+        0.989501953125,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.111083984375
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5126,
+      "count": 148,
+      "type": "VEC2",
+      "max": [
+        2093567.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.98631578683853149
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5121,
+      "count": 222,
+      "type": "SCALAR",
+      "max": [
+        147.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5126,
+      "count": 324,
+      "type": "VEC3",
+      "max": [
+        9.9356040954589844,
+        0.0,
+        0.0
+      ],
+      "min": [
+        -17.275447845458984,
+        -4.6780900955200195,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 324,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5126,
+      "count": 324,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5126,
+      "count": 324,
+      "type": "VEC2",
+      "max": [
+        0.989501953125,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.111083984375
+      ]
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5126,
+      "count": 324,
+      "type": "VEC2",
+      "max": [
+        2093567.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.98631578683853149
+      ]
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5123,
+      "count": 486,
+      "type": "SCALAR",
+      "max": [
+        323.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5126,
+      "count": 40,
+      "type": "VEC3",
+      "max": [
+        3.9298150539398193,
+        0.542565107345581,
+        0.0
+      ],
+      "min": [
+        -1.5991325378417969,
+        -0.44743490219116211,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5126,
+      "count": 40,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 20,
+      "componentType": 5126,
+      "count": 40,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 21,
+      "componentType": 5126,
+      "count": 40,
+      "type": "VEC2",
+      "max": [
+        0.981689453125,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.401123046875
+      ]
+    },
+    {
+      "bufferView": 22,
+      "componentType": 5126,
+      "count": 40,
+      "type": "VEC2",
+      "max": [
+        2093567.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.98842108249664307
+      ]
+    },
+    {
+      "bufferView": 23,
+      "componentType": 5121,
+      "count": 60,
+      "type": "SCALAR",
+      "max": [
+        39.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 24,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "max": [
+        16.0,
+        10.0,
+        0.0
+      ],
+      "min": [
+        -16.0,
+        -10.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 25,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 26,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC2",
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.375
+      ]
+    },
+    {
+      "bufferView": 27,
+      "componentType": 5121,
+      "count": 6,
+      "type": "SCALAR",
+      "max": [
+        3.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "alveoli_full.bin",
+      "byteLength": 31900
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 384
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 384,
+      "byteLength": 384
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 768,
+      "byteLength": 512
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1280,
+      "byteLength": 256
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1536,
+      "byteLength": 256
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1792,
+      "byteLength": 48
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1840,
+      "byteLength": 1776
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3616,
+      "byteLength": 1776
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 5392,
+      "byteLength": 2368
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7760,
+      "byteLength": 1184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8944,
+      "byteLength": 1184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10128,
+      "byteLength": 222
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10350,
+      "byteLength": 3888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 14238,
+      "byteLength": 3888
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 18126,
+      "byteLength": 5184
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 23310,
+      "byteLength": 2592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 25902,
+      "byteLength": 2592
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 28494,
+      "byteLength": 972
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 29466,
+      "byteLength": 480
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 29946,
+      "byteLength": 480
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 30426,
+      "byteLength": 640
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31066,
+      "byteLength": 320
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31386,
+      "byteLength": 320
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31706,
+      "byteLength": 60
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31766,
+      "byteLength": 48
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31814,
+      "byteLength": 48
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31862,
+      "byteLength": 32
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 31894,
+      "byteLength": 6
+    }
+  ],
+  "images": [
+    {
+      "uri": "453781577603250025Main.png",
+      "name": "453781577603250025Main.png"
+    },
+    {
+      "uri": "20614222722040980834Main.png",
+      "name": "20614222722040980834Main.png"
+    },
+    {
+      "uri": "371857150Alveoli_FullMain.png",
+      "name": "Alveoli_Full"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      },
+      "alphaMode": "BLEND",
+      "name": "RUBIK-MEDIUM SDF Material"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.0
+      },
+      "alphaMode": "BLEND",
+      "name": "RUBIK-LIGHT SDF Material"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.0
+      },
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "Hidden/Cognitive/Canvas Export Shader"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4
+          },
+          "indices": 5,
+          "material": 0
+        }
+      ],
+      "name": "Component"
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TANGENT": 8,
+            "TEXCOORD_0": 9,
+            "TEXCOORD_1": 10
+          },
+          "indices": 11,
+          "material": 1
+        }
+      ],
+      "name": "Info 1"
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 12,
+            "NORMAL": 13,
+            "TANGENT": 14,
+            "TEXCOORD_0": 15,
+            "TEXCOORD_1": 16
+          },
+          "indices": 17,
+          "material": 1
+        }
+      ],
+      "name": "Info 2"
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 18,
+            "NORMAL": 19,
+            "TANGENT": 20,
+            "TEXCOORD_0": 21,
+            "TEXCOORD_1": 22
+          },
+          "indices": 23,
+          "material": 1
+        }
+      ],
+      "name": "Time"
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 24,
+            "NORMAL": 25,
+            "TEXCOORD_0": 26
+          },
+          "indices": 27,
+          "material": 2
+        }
+      ],
+      "name": "Alveoli Full"
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1,
+        2,
+        3,
+        7,
+        25
+      ],
+      "name": "Alveoli Full"
+    },
+    {
+      "rotation": [
+        2.31808684E-07,
+        0.0,
+        -9.693773E-07,
+        -1.0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "translation": [
+        -12.0113792,
+        2.86,
+        -0.003
+      ],
+      "name": "P/P"
+    },
+    {
+      "translation": [
+        -13.81,
+        8.16,
+        0.0
+      ],
+      "name": "Close"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6
+      ],
+      "translation": [
+        1.01928711,
+        -91.0,
+        0.0
+      ],
+      "name": "DETAILS"
+    },
+    {
+      "rotation": [
+        2.31899293E-07,
+        0.0,
+        -9.695067E-07,
+        -1.0
+      ],
+      "scale": [
+        0.03,
+        0.03,
+        1.0
+      ],
+      "translation": [
+        9.64,
+        81.86,
+        0.0
+      ],
+      "name": "LineAlt"
+    },
+    {
+      "rotation": [
+        2.31899293E-07,
+        0.0,
+        -9.695067E-07,
+        -1.0
+      ],
+      "scale": [
+        0.03,
+        0.03,
+        1.0
+      ],
+      "translation": [
+        -11.83,
+        81.97,
+        0.0
+      ],
+      "name": "LineAlt"
+    },
+    {
+      "rotation": [
+        2.31899293E-07,
+        0.0,
+        -9.695067E-07,
+        -1.0
+      ],
+      "scale": [
+        0.03,
+        0.03,
+        1.0
+      ],
+      "translation": [
+        -1.25,
+        81.76,
+        0.0
+      ],
+      "name": "LineAlt"
+    },
+    {
+      "children": [
+        8,
+        14,
+        16,
+        17,
+        19,
+        21,
+        22,
+        24
+      ],
+      "translation": [
+        1.02,
+        -0.04,
+        0.0
+      ],
+      "name": "Content"
+    },
+    {
+      "children": [
+        9,
+        10,
+        12
+      ],
+      "scale": [
+        0.0450000055,
+        0.0450000055,
+        0.0009000001
+      ],
+      "translation": [
+        0.0,
+        -6.84,
+        0.0
+      ],
+      "name": "MusicSlider"
+    },
+    {
+      "name": "Background"
+    },
+    {
+      "children": [
+        11
+      ],
+      "translation": [
+        5.0,
+        0.0,
+        0.0
+      ],
+      "name": "Fill Area"
+    },
+    {
+      "name": "Fill"
+    },
+    {
+      "children": [
+        13
+      ],
+      "name": "Handle Slide Area"
+    },
+    {
+      "translation": [
+        -198.5,
+        0.0,
+        0.0
+      ],
+      "name": "Handle"
+    },
+    {
+      "children": [
+        15
+      ],
+      "translation": [
+        9.1,
+        9.03,
+        -0.0089
+      ],
+      "name": "Component"
+    },
+    {
+      "mesh": 0,
+      "name": "Component"
+    },
+    {
+      "rotation": [
+        1.28149975E-06,
+        8.940696E-08,
+        -0.7071057,
+        0.707107961
+      ],
+      "scale": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "translation": [
+        9.02,
+        8.28,
+        0.0
+      ],
+      "name": "Corner"
+    },
+    {
+      "children": [
+        18
+      ],
+      "translation": [
+        13.89,
+        2.0,
+        0.0
+      ],
+      "name": "Info 1"
+    },
+    {
+      "mesh": 1,
+      "name": "Info 1"
+    },
+    {
+      "children": [
+        20
+      ],
+      "translation": [
+        3.97999954,
+        -0.9899988,
+        0.0
+      ],
+      "name": "Info 2"
+    },
+    {
+      "mesh": 2,
+      "name": "Info 2"
+    },
+    {
+      "translation": [
+        13.03,
+        -6.88,
+        0.0
+      ],
+      "name": "Play"
+    },
+    {
+      "children": [
+        23
+      ],
+      "translation": [
+        -14.5300007,
+        -6.99,
+        0.0
+      ],
+      "name": "Time"
+    },
+    {
+      "mesh": 3,
+      "name": "Time"
+    },
+    {
+      "translation": [
+        10.63,
+        -6.88,
+        0.0
+      ],
+      "name": "Repeat"
+    },
+    {
+      "mesh": 4,
+      "name": "Alveoli Full"
+    }
+  ],
+  "samplers": [
+    {}
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "alveoli_full"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "453781577603250025Main"
+    },
+    {
+      "sampler": 0,
+      "source": 1,
+      "name": "20614222722040980834Main"
+    },
+    {
+      "sampler": 0,
+      "source": 2,
+      "name": "371857150Alveoli_FullMain"
+    }
+  ]
+}

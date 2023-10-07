@@ -1,0 +1,259 @@
+*****************************
+***********SYSTEM************
+*****************************
+Unity Version:2021.3.7f1
+OS:Windows 11  (10.0.22621) 64bit
+System Time: 2023-09-22 10:41:25 PM
+
+*****************************
+***********PROJECT***********
+*****************************
+Scripting Define Symbols: C3D_DEFAULT
+Packages:
+  com.cognitive3d.c3d-sdk 1.3.3
+  com.unity.addressables 1.19.19
+  com.unity.ide.rider 3.0.15
+  com.unity.ide.visualstudio 2.0.17
+  com.unity.probuilder 5.0.6
+  com.unity.recorder 3.0.3
+  com.unity.render-pipelines.universal 12.1.7
+  com.unity.test-framework 1.1.33
+  com.unity.textmeshpro 3.0.6
+  com.unity.timeline 1.6.4
+  com.unity.ugui 1.0.0
+  com.unity.visualscripting 1.7.8
+  com.unity.xr.arcore 4.2.3
+  com.unity.xr.interaction.toolkit 2.1.0-pre.1
+  com.unity.xr.management 4.2.1
+  com.unity.xr.oculus 3.0.2
+  com.unity.xr.openxr 1.4.2
+  com.unity.modules.ai 1.0.0
+  com.unity.modules.androidjni 1.0.0
+  com.unity.modules.animation 1.0.0
+  com.unity.modules.assetbundle 1.0.0
+  com.unity.modules.audio 1.0.0
+  com.unity.modules.cloth 1.0.0
+  com.unity.modules.director 1.0.0
+  com.unity.modules.imageconversion 1.0.0
+  com.unity.modules.imgui 1.0.0
+  com.unity.modules.jsonserialize 1.0.0
+  com.unity.modules.particlesystem 1.0.0
+  com.unity.modules.physics 1.0.0
+  com.unity.modules.physics2d 1.0.0
+  com.unity.modules.screencapture 1.0.0
+  com.unity.modules.terrain 1.0.0
+  com.unity.modules.terrainphysics 1.0.0
+  com.unity.modules.tilemap 1.0.0
+  com.unity.modules.ui 1.0.0
+  com.unity.modules.uielements 1.0.0
+  com.unity.modules.umbra 1.0.0
+  com.unity.modules.unityanalytics 1.0.0
+  com.unity.modules.unitywebrequest 1.0.0
+  com.unity.modules.unitywebrequestassetbundle 1.0.0
+  com.unity.modules.unitywebrequestaudio 1.0.0
+  com.unity.modules.unitywebrequesttexture 1.0.0
+  com.unity.modules.unitywebrequestwww 1.0.0
+  com.unity.modules.vehicles 1.0.0
+  com.unity.modules.video 1.0.0
+  com.unity.modules.vr 1.0.0
+  com.unity.modules.wind 1.0.0
+  com.unity.modules.xr 1.0.0
+SDK Version: 1.3.3
+Api Key: ****J9R0
+Developer Key: ****IDGR
+Enable Logging: True
+Enable Development Logging: False
+Gaze Type: Physics
+Snapshot Interval: 0.1
+Dynamic Object Search in Parent: True
+Dynamic Object Layer Mask: -1
+Track GPS Location: False
+GPS Accuracy: 2
+Record Floor Position: True
+Automatic Send Timer: 10
+Gaze Snapshot Batch Size: 64
+Event Snapshot Batch Size: 64
+Dynamic Snapshot Batch Size: 128
+Sensor Snapshot Batch Size: 128
+Fixation Snapshot Batch Size: 64
+Save Data to Local Cache if no internet connection: True
+Cache Size (bytes): 104857600
+Cache Size (mb): 100.0 MB
+Custom Protocol: https
+Custom Gateway: data.cognitive3d.com
+Custom Viewer: viewer.cognitive3d.com/scene/
+Custom Dashboard: app.cognitive3d.com
+Texture Export Quality: 1
+Export Lowest LOD from LODGroup Components: True
+Scene Settings:
+  ├─Bio Lessons
+  │  ├─Scene Id: a790fe76-0cfa-4fb1-8ad7-aec11e96805a
+  │  ├─Scene Path: Assets/Scenes/Bio Lessons.unity
+  │  ├─Last Revision: 09/14/2023 23:54:08
+  │  ├─Version Number: 1
+  │  └─Version Id: 4842
+  ├─MainMenu
+  │  ├─Scene Id: fd1bfd4b-3b9f-419c-a922-c26af3b6480c
+  │  ├─Scene Path: Assets/Scenes/MainMenu.unity
+  │  ├─Last Revision: 09/15/2023 00:11:38
+  │  ├─Version Number: 2
+  │  └─Version Id: 4844
+  └─Test
+     ├─Scene Id: 
+     ├─Scene Path: Assets/Scenes/Test.unity
+     ├─Last Revision: 
+     ├─Version Number: 0
+     └─Version Id: 0
+
+*****************************
+********CURRENT SCENE********
+*****************************
+Scene Name: Test
+Scene Id: 
+Scene Path: Assets/Scenes/Test.unity
+Last Revision: 
+Version Number: 0
+Version Id: 0
+Scene Size (mb): 0.97
+Main Camera GameObject: Main Camera
+Manager Initialize On Start: True
+Manager Startup Delay Time (s): 0
+
+*****************************
+****CURRENT SCENE OBJECTS****
+*****************************
+Dynamic Object Count: 2
+  ├─RightHand Controller
+  │  ├─Mesh Name: righthand_controller
+  │  ├─Has Collider: false
+  │  └─Has Children: false
+  └─LeftHand Controller
+     ├─Mesh Name: lefthand_controller
+     ├─Has Collider: false
+     └─Has Children: false
+
+*****************************
+********EXPORT FOLDER********
+*****************************
+/Cognitive3D_SceneExplorerExport (165mb)
+   /Bio Lessons (0.98mb)
+      371857150New_Terrain_4Main.png (0.00mb)
+      debug.log (0.00mb)
+      scene.bin (0.93mb)
+      scene.gltf (0.01mb)
+      settings.json (0.00mb)
+      /screenshot (0.03mb)
+         screenshot.png (0.03mb)
+   /Dynamic (161.71mb)
+      /alveoli_full (1.24mb)
+         20614222722040980834Main.png (0.55mb)
+         371857150Alveoli_FullMain.png (0.05mb)
+         453781577603250025Main.png (0.57mb)
+         alveoli_full.bin (0.03mb)
+         alveoli_full.gltf (0.02mb)
+         cvr_object_thumbnail.png (0.03mb)
+      /animalcell (85.64mb)
+         1027148428GolgiApparatus_MetallicSmoothnessMetallicGloss.png (0.03mb)
+         1052969303GolgiApparatus_AlbedoTransparencyMain.png (0.03mb)
+         1068253797Riticulum_AlbedoTransparencyMain.png (0.70mb)
+         1090711451GolgiApparatus_NormalBump.png (2.98mb)
+         1126050263Cytoskeleton_NormalBump.png (0.00mb)
+         1146444623Riticulum_NormalBump.png (5.12mb)
+         1224575318InclusionOf_NormalBump.png (3.91mb)
+         1232844393MitochondrionSlice_NormalBump.png (6.02mb)
+         1331660077NuclearEnvelope_MetallicSmoothnessMetallicGloss.png (0.27mb)
+         1486957678PlasmaMembrane_Animal_MetallicSmoothnessMetallicGloss.png (3.54mb)
+         1520759448NuclearNucleolus_AlbedoTransparencyMain.png (3.19mb)
+         1532956094Lysosome_MetallicSmoothnessMetallicGloss.png (0.07mb)
+         1537942598InclusionOf_AlbedoTransparencyMain.png (0.52mb)
+         170254519Cytoplasm_Animal_NormalBump.png (4.78mb)
+         1784106705Centriole_NormalBump.png (1.04mb)
+         1800842920Ribosome_MetallicSmoothnessMetallicGloss.png (0.14mb)
+         1898080031Cytoskeleton_AlbedoTransparencyMain.png (0.00mb)
+         1904878242Cytoplasm_Animal_MetallicSmoothnessMetallicGloss.png (2.67mb)
+         1910331384NuclearEnvelope_NormalBump.png (4.28mb)
+         1943956845Cytoplasm_Animal_AlbedoTransparencyMain.png (4.79mb)
+         1988823470Riticulum_MetallicSmoothnessMetallicGloss.png (0.01mb)
+         20614222722040980834Main.png (0.55mb)
+         2100744900NuclearNucleolus_NormalBump.png (4.69mb)
+         2108839053MitochondrionSlice_AlbedoTransparencyMain.png (5.26mb)
+         24455025PlasmaMembrane_Animal_NormalBump.png (3.90mb)
+         342709170Mitochondrion_MetallicSmoothnessMetallicGloss.png (0.13mb)
+         371857150Canv_MainMain.png (0.03mb)
+         395616720NuclearEnvelope_AlbedoTransparencyMain.png (0.30mb)
+         400841069InclusionOf_MetallicSmoothnessMetallicGloss.png (0.08mb)
+         433111837Lysosome_AlbedoTransparencyMain.png (0.07mb)
+         442564674MitochondrionSlice_MetallicSmoothnessMetallicGloss.png (2.17mb)
+         497398676Cytoskeleton_MetallicSmoothnessMetallicGloss.png (0.00mb)
+         552805495Ribosome_AlbedoTransparencyMain.png (0.21mb)
+         595335365Mitochondrion_AlbedoTransparencyMain.png (1.29mb)
+         632921211Lysosome_NormalBump.png (5.54mb)
+         671351566Centriole_MetallicSmoothnessMetallicGloss.png (4.41mb)
+         675627099PlasmaMembrane_Animal_AlbedoTransparencyMain.png (3.67mb)
+         755074845NuclearNucleolus_MetallicSmoothnessMetallicGloss.png (2.78mb)
+         788306257Mitochondrion_NormalBump.png (1.62mb)
+         805549013Ribosome_NormalBump.png (0.30mb)
+         94013829Centriole_AlbedoTransparencyMain.png (2.29mb)
+         animalcell.bin (1.94mb)
+         animalcell.gltf (0.25mb)
+         cvr_object_thumbnail.png (0.05mb)
+      /bacterial_cell (73.62mb)
+         1092794382Capsule_MetallicSmoothnessMetallicGloss.png (2.73mb)
+         1195627003Capsule_AlbedoTransparencyMain.png (6.19mb)
+         1205888492CellWall_Bacterial_MetallicSmoothnessMetallicGloss.png (0.07mb)
+         1224575318InclusionOf_NormalBump.png (3.91mb)
+         1279808033CellWall_Bacterial_AlbedoTransparencyMain.png (1.88mb)
+         1322773042Cytoplasm_Bacterial_MetallicSmoothnessMetallicGloss.png (2.42mb)
+         1458496829PlasmaMembrane_Bacterial_AlbedoTransparencyMain.png (5.06mb)
+         1537942598InclusionOf_AlbedoTransparencyMain.png (0.52mb)
+         1726942945Pili_NormalBump.png (0.07mb)
+         1755250961Capsule_NormalBump.png (4.29mb)
+         1800842920Ribosome_MetallicSmoothnessMetallicGloss.png (0.14mb)
+         1956687825Cytoplasm_Bacterial_NormalBump.png (5.66mb)
+         2018481015Mesosome_NormalBump.png (3.46mb)
+         2036130958Flagellum_MetallicSmoothnessMetallicGloss.png (0.52mb)
+         20614222722040980834Main.png (0.55mb)
+         2088543436Mesosome_MetallicSmoothnessMetallicGloss.png (5.15mb)
+         2115776593Flagellum_NormalBump.png (0.02mb)
+         32384770PlasmaMembrane_Bacterial_MetallicSmoothnessMetallicGloss.png (4.71mb)
+         349648197Cytoplasm_Bacterial_AlbedoTransparencyMain.png (4.36mb)
+         371857150Canv_MainMain.png (0.04mb)
+         400841069InclusionOf_MetallicSmoothnessMetallicGloss.png (0.08mb)
+         46936581Flagellum_AlbedoTransparencyMain.png (0.69mb)
+         544801151Mesosome_AlbedoTransparencyMain.png (5.64mb)
+         546176295CellWall_Bacterial_NormalBump.png (4.76mb)
+         552805495Ribosome_AlbedoTransparencyMain.png (0.21mb)
+         566298041Pili_AlbedoTransparencyMain.png (1.51mb)
+         692356779PlasmaMembrane_Bacterial_NormalBump.png (4.14mb)
+         803510948Pili_MetallicSmoothnessMetallicGloss.png (1.22mb)
+         805549013Ribosome_NormalBump.png (0.30mb)
+         bacterial_cell.bin (3.09mb)
+         bacterial_cell.gltf (0.20mb)
+         cvr_object_thumbnail.png (0.03mb)
+      /hand_menu (0.60mb)
+         20614222722040980834Main.png (0.55mb)
+         371857150Canv_MainMain.png (0.00mb)
+         cvr_object_thumbnail.png (0.00mb)
+         hand_menu.bin (0.02mb)
+         hand_menu.gltf (0.02mb)
+      /mainmenu (0.61mb)
+         20614222722040980834Main.png (0.55mb)
+         371857150Canv_MainMain.png (0.02mb)
+         cvr_object_thumbnail.png (0.02mb)
+         mainmenu.bin (0.01mb)
+         mainmenu.gltf (0.01mb)
+   /MainMenu (1.02mb)
+      371857150Canv_MainMain.png (0.02mb)
+      371857150New_Terrain_4Main.png (0.00mb)
+      debug.log (0.00mb)
+      scene.bin (0.93mb)
+      scene.gltf (0.01mb)
+      settings.json (0.00mb)
+      /screenshot (0.05mb)
+         screenshot.png (0.05mb)
+   /Test (0.97mb)
+      371857150Canv_MainMain.png (0.03mb)
+      371857150New_Terrain_4Main.png (0.00mb)
+      scene.bin (0.93mb)
+      scene.gltf (0.01mb)
+      settings.json (0.00mb)

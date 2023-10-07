@@ -24,7 +24,7 @@ public class LoginMenu : MonoBehaviour
     }
 
     private void AttemptLogin()
-    {
+    {        
         StartCoroutine(Login());
     }   
 

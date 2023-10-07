@@ -8,7 +8,7 @@ using System.Linq;
 using System;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
+[RequireComponent(typeof(Cognitive3D.DynamicObject))]
 public class LessonModel : MonoBehaviour
 {
 	public int LecturerIndex;

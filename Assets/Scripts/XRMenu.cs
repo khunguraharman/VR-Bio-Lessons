@@ -4,7 +4,7 @@ using System.Timers;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using UnityEditor;
 
 public class XRMenu : MonoBehaviour 
 {
@@ -266,11 +266,12 @@ public class XRMenu : MonoBehaviour
 		
 	public void QuitGame()
 	{
-		#if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
-		#else
-			Application.Quit();
-		#endif
+#if UNITY_EDITOR
+		EditorApplication.ExitPlaymode();
+#endif
+#if UNITY_STANDALONE
+		Application.Quit();
+#endif
 	}
 
 	public void Reset_Timer() //reset timer if user hover overs anything

@@ -12,8 +12,8 @@ public class RightHandPresence : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake()
-    {
-        Application.targetFrameRate = 72;
+    {        
+        CheckDevices();
     }
     void Start()
     {
@@ -23,7 +23,7 @@ public class RightHandPresence : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDevices();
+        
     }
 
     void CheckDevices()

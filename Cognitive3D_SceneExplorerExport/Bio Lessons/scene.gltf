@@ -1,0 +1,322 @@
+{
+  "extensionsUsed": [
+    "KHR_lights_punctual"
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 16384,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "min": [
+        -1.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 16384,
+      "type": "VEC3",
+      "max": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "min": [
+        0.0,
+        0.99999994039535522,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 16384,
+      "type": "VEC4",
+      "max": [
+        -1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 16384,
+      "type": "VEC2",
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 96774,
+      "type": "SCALAR",
+      "max": [
+        16383.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "scene.bin",
+      "byteLength": 979980
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 196608
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 196608,
+      "byteLength": 196608
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 393216,
+      "byteLength": 262144
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 655360,
+      "byteLength": 131072
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 786432,
+      "byteLength": 193548
+    }
+  ],
+  "cameras": [
+    {
+      "perspective": {
+        "aspectRatio": 1.8267253637313843,
+        "yfov": 1.0471975803375244,
+        "zfar": 998.65380859375,
+        "znear": 0.0099999997764825821
+      },
+      "type": "perspective",
+      "name": "Main Camera"
+    }
+  ],
+  "images": [
+    {
+      "uri": "371857150New_Terrain_4Main.png",
+      "name": "New_Terrain_4"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      },
+      "name": "Standard"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Terrain"
+    }
+  ],
+  "nodes": [
+    {
+      "rotation": [
+        0.109381631,
+        0.8754261,
+        0.408217877,
+        -0.234569684
+      ],
+      "translation": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "extensions": {
+        "KHR_lights_punctual": {
+          "light": 0
+        }
+      },
+      "name": "Directional Light"
+    },
+    {
+      "name": "Cognitive3D_Manager"
+    },
+    {
+      "translation": [
+        -0.75,
+        0.0,
+        2.0
+      ],
+      "name": "Lesson Anchor"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6
+      ],
+      "translation": [
+        -0.75,
+        0.979,
+        3.726
+      ],
+      "name": "Anchors"
+    },
+    {
+      "translation": [
+        -0.73,
+        0.73,
+        0.0
+      ],
+      "name": "PreviewAnchor"
+    },
+    {
+      "translation": [
+        0.73,
+        0.73,
+        0.0
+      ],
+      "name": "FullCardAnchor"
+    },
+    {
+      "name": "OtherComponentsMenu"
+    },
+    {
+      "translation": [
+        2.27653813,
+        -1.42088556,
+        -2.127112
+      ],
+      "name": "XR Interaction Manager"
+    },
+    {
+      "children": [
+        9
+      ],
+      "translation": [
+        -0.75,
+        0.5,
+        0.5
+      ],
+      "name": "XR Origin"
+    },
+    {
+      "children": [
+        10
+      ],
+      "translation": [
+        0.0,
+        1.1176,
+        0.0
+      ],
+      "name": "Camera Offset"
+    },
+    {
+      "camera": 0,
+      "name": "Main Camera"
+    },
+    {
+      "translation": [
+        -8.81894,
+        0.246772051,
+        9.227211
+      ],
+      "name": "EventSystem"
+    },
+    {
+      "children": [
+        13
+      ],
+      "name": "Terrain"
+    },
+    {
+      "mesh": 0,
+      "name": "Terrain"
+    }
+  ],
+  "samplers": [
+    {}
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        11,
+        12
+      ],
+      "name": "scene"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "371857150New_Terrain_4Main"
+    }
+  ],
+  "extensions": {
+    "KHR_lights_punctual": {
+      "lights": [
+        {
+          "type": "directional",
+          "intensity": 2.0,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "name": "Directional Light"
+        }
+      ]
+    }
+  }
+}
