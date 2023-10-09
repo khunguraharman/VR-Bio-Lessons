@@ -6,15 +6,18 @@ using SlimUI.ModernMenu;
 using System;
 using UnityEngine.Audio;
 using UnityEngine.XR.Interaction.Toolkit;
+//using UnityEngine.InputSystem;
+
 
 public class LeftHandPresence : MonoBehaviour
 {
+    public UnityEngine.InputSystem.InputActionReference QuickMenuAction;
     
     public static string build_info = "0_0_1";
     List<UnityEngine.XR.InputDevice> AllDevices = new List<UnityEngine.XR.InputDevice>();
 
     public GameObject[] ControllerPrefabs = new GameObject[4];
-    public static InputDevice hand_controller { get; private set; }
+    public static UnityEngine.XR.InputDevice hand_controller { get; private set; }
     bool assign_controller_models = true; // will need to assign controllers on startup    
     bool LHMenuButtonPressed;
 
@@ -122,16 +125,13 @@ public class LeftHandPresence : MonoBehaviour
         //SpawnableModels = LessonModels;
         XRRayInteractor LeftHandInteractable = gameObject.GetComponent<XRRayInteractor>();
         Debug.Log("The LH controller interaction mask is " + LeftHandInteractable.interactionLayers); // does this output a string that is the name or an int that is the value property?
+        QuickMenuAction.action.performed += TestActionBased;
+        QuickMenuAction.action.Enable();
 
     }    
 
     // Update is called once per frame
-    void FixedUpdate()
-    {       
-
-        Spawn_XRMenu();        
-        
-    }
+    
 
     void CheckDevices_AssignModels()
     {
@@ -162,34 +162,30 @@ public class LeftHandPresence : MonoBehaviour
             assign_controller_models = false;
         }
 
-    }
+    }    
 
-    void Spawn_XRMenu()
+    void TestActionBased(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (hand_controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out LHMenuButtonPressed) && LHMenuButtonPressed)
+        Enable_Lesson_Contents(false);
+
+        if (existingmenu)
         {
-            Enable_Lesson_Contents(false);
-
-            if (existingmenu)
-            {
-                //Debug.Log("Existing XRMenu was detected");
-                Destroy(existingmenu.gameObject);
-            }
-
-            Vector3 pos = transform.position;
-            pos += transform.TransformDirection(menuOffset);
-            Vector3 rot_ea = transform.rotation.eulerAngles;
-            rot_ea[2] = 0;
-            Quaternion rot = new Quaternion();
-            rot.eulerAngles = rot_ea;
-            //Debug.Log("Rotation:" + rot_ea);
-            existingmenu = Instantiate(MainMenuPrefab, pos, rot, transform.parent); // want the parent to be Camera Offset
-             /*                                                                        
-            existingmenu.InheritLecturerandPanelIndex(LecturerIndex, PanelIndex);
-            existingmenu.InheritLesson(LessonIndex);
-             */
-            
+            //Debug.Log("Existing XRMenu was detected");
+            Destroy(existingmenu.gameObject);
         }
+        Debug.Log("You ran the action");
+        Vector3 pos = transform.position;
+        pos += transform.TransformDirection(menuOffset);
+        Vector3 rot_ea = transform.rotation.eulerAngles;
+        rot_ea[2] = 0;
+        Quaternion rot = new Quaternion();
+        rot.eulerAngles = rot_ea;
+        //Debug.Log("Rotation:" + rot_ea);
+        existingmenu = Instantiate(MainMenuPrefab, pos, rot, transform.parent); // want the parent to be Camera Offset
+        /*                                                                        
+       existingmenu.InheritLecturerandPanelIndex(LecturerIndex, PanelIndex);
+       existingmenu.InheritLesson(LessonIndex);
+        */
     }
 
     public static void Enable_Lesson_Contents(bool new_state)
@@ -231,8 +227,13 @@ public class LeftHandPresence : MonoBehaviour
             }
         }
     }
-    
-    
+    private void OnDisable()
+    {
+        QuickMenuAction.action.performed -= TestActionBased;
+        QuickMenuAction.action.Disable();
+    }
+
+
 
 
 }
