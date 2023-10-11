@@ -30,12 +30,13 @@ public class LeftHandPresenceMainMenu : MonoBehaviour
         Application.targetFrameRate = 72;         
         XRRayInteractor LeftHandInteractable = gameObject.GetComponent<XRRayInteractor>();
         Debug.Log("The LH controller interaction mask is " + LeftHandInteractable.interactionLayers); // does this output a string that is the name or an int that is the value property?
+        CheckDevices_AssignModels();
     }   
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDevices_AssignModels();       
+              
     }
 
     void CheckDevices_AssignModels()
